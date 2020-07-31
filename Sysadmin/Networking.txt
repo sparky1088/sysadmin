@@ -5,6 +5,29 @@ Creation-Date: 2020-07-31T09:38:21-07:00
 ====== Networking ======
 This is just a bunch of stuff that I have to look up constantly. I am working on organizing it.
 
+===== TCP Dump: =====
+Basic tcpdump to host with port:
+{{{code: lang="sh" linenumbers="True"
+tcpdump -i <interface OR any> host <host IP for src or dst> and port <port>
+}}}
+
+write to file with verbose output to a specific host:
+{{{code: lang="sh" linenumbers="True"
+sudo tcpdump -vvv -n host 123.45.67.89 -w capture.cap
+}}}
+
+read cap file (you can also import this into wireshark):
+{{{code: lang="sh" linenumbers="True"
+tcpdump -r capture.cap
+}}}
+
+I think this is looking for a specific time in a capture file (when you do this make sure to note that the timestamps i believe come from the machine where the capture happened) 12:30 specifically im not sure what the secondary grep was
+{{{code: lang="sh" linenumbers="True"
+tcpdump -l -n -r capture2.cap ip |grep "^12:3" >12:3.txt
+grep "37\.43947" 12.3.txt >12.3.port43947.txt
+}}}
+
+
 ===== IP Tables: =====
 This is to maintain persistent connections for already established sessions so a rule doesnt fork you over when chagning things
 {{{code: lang="sh" linenumbers="True"

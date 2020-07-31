@@ -1,0 +1,102 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2020-07-31T11:26:56-07:00
+
+====== MySQL ======
+
+===== Wordpress Specific Queries =====
+These are some of the queries I use for copying and updating wordpress sites:
+1. Create the new database:  
+{{{code: lang="sql" linenumbers="True"
+mysql> create database `new-db-name`;
+}}}
+
+2. Create user with specific access: 
+{{{code: lang="sql" linenumbers="True"
+mysql> CREATE USER 'newuser'@'localhost' IDENTIFIED BY 'password';
+mysql> GRANT USAGE ON *.* TO 'kb-uk-new'@'localhost'; GRANT ALL PRIVILEGES ON `kb-uk-new`.* TO 'kb-uk-new'@'localhost';
+mysql> FLUSH PRIVILEGES;
+}}}
+
+3. Import old database into new database: 
+{{{code: lang="sh" linenumbers="True"
+computer$ cat kb-uk.sql | mysql kb-uk-new
+}}}
+
+4. Update the urls in the wp_options table: 
+{{{code: lang="sql" linenumbers="True"
+mysql> UPDATE wp_options SET option_value ='https://newurl' WHERE option_id in (1,2);
+}}}
+
+or (if the option_ids are not 1 and 2)
+{{{code: lang="sql" linenumbers="True"
+mysql> UPDATE wp_options SET option_value = replace(option_value, 'https://oldurl','https://newurl') WHERE option_name = 'home' OR option_name = 'siteurl';
+}}}
+
+5. Update the wp_posts and wp_postmeta:
+{{{code: lang="sql" linenumbers="True"
+mysql> UPDATE wp_posts SET guid = replace(guid, 'https://oldurl','https://emsicollege.emsidata.co.uk') where guid like 'https://newurl%';
+mysql> UPDATE wp_posts SET post_content = replace(post_content, 'https://oldurl','https://newurl') where post_content like 'https://oldurl%';
+mysql> UPDATE wp_postmeta SET meta_value = replace(meta_value,'https://oldurl','https://newurl') where meta_value like 'https://oldurl%';
+}}}
+
+6. I usually double check these with select queries.
+
+===== Large SQL Files =====
+You can import large files this command line way:
+{{{code: lang="sh" linenumbers="True"
+computer$ mysql -h yourhostname -u username -p databasename < yoursqlfile.sql
+}}}
+
+
+===== Tables, Columns, and Data types from MySQL =====
+{{{code: lang="sql" linenumbers="True"
+mysql> select distinct table_name, column_name, data_type from information_schema.columns where information_schema.columns.data_type <> 'datetime' and information_schema.columns.data_type <> 'timestamp' and table_name not in (select table_name from information_schema.columns where data_type = 'datetime') and table_name not in (select table_name from information_schema.columns where data_type = 'timestamp');
+}}}
+
+
+===== Change Max_Allowed_Packet size =====
+This is useful if you cant restart the server but need this changed (if you need it to be permenant do it from the config file)
+{{{code: lang="sql" linenumbers="True"
+mysql> SET GLOBAL max_allowed_packet=10073741824;
+}}}
+
+
+===== Size of DB in GB =====
+{{{code: lang="sql" linenumbers="True"
+mysql> SELECT table_schema "DB Name", Round(Sum(data_length + index_length) / 1024 / 1024/1024, 1) "DB Size in GB" FROM information_schema.tables GROUP BY table_schema; 
+}}}
+
+This query comes from the mysql forums, where there are more comprehensive instructions available
+
+===== Size of DB =====
+{{{code: lang="sql" linenumbers="True"
+mysql> SELECT table_schema "DB Name", Round(Sum(data_length + index_length) / 1024 / 1024, 1) "DB Size in MB" FROM information_schema.tables GROUP BY table_schema;
+}}}
+
+This query comes from the mysql forums, where there are more comprehensive instructions available
+
+===== Create MySQL User and Password =====
+{{{code: lang="sql" linenumbers="True"
+mysql> CREATE USER 'UserName'@'127.0.0.1' IDENTIFIED BY 'SomeReallyLongObscurePasswordGoesHere';
+}}}
+
+If access is needed from a different IP other than the host itself you can change that or use * for all hosts
+
+===== Change MySQL User Password =====
+{{{code: lang="sql" linenumbers="True"
+mysql> SET PASSWORD FOR 'UserName'@'localhost' = PASSWORD('SomeReallyLongObscurePasswordGoesHere');
+}}}
+
+
+===== User access to a single table =====
+{{{code: lang="sql" linenumbers="True"
+mysql> DELETE USER 'USER1'@'127.0.0.1' IDENTIFIED BY 'SomeSecurePassword';
+mysql> DROP USER 'USER1'@'127.0.0.1';
+
+mysql> CREATE USER 'USER1'@'localhost' IDENTIFIED BY 'VsJqEo!&E$DBSkuVCqd';
+mysql> GRANT SELECT, UPDATE, INSERT, DELETE ON psa_appliance.sso_mapping TO USER1@'localhost';
+
+mysql> GRANT FILE ON *.* to USER1@'localhost';
+}}}
+

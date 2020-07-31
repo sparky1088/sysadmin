@@ -1,0 +1,11 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2020-07-31T11:48:00-07:00
+
+====== Wordpress ======
+
+See [[../SQL/MySQL.txt|MySQL]] for specific wordpress queries to import with.
+
+When copying files make sure to change the wpconfig.conf to contain the new database name and password.
+
+Also make sure to enable the site in apache (or whatever else you use)

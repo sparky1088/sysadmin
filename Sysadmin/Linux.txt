@@ -12,6 +12,17 @@ Zim - used for notes
 [[./Vim.txt|Vim]] - used for editing files
 Ranger - this lets your browse files easily
 
+Check sshd config
+{{{code: lang="sh" linenumbers="True"
+computer# sudo /usr/sbin/sshd -t
+}}}
+
+or
+{{{code: lang="sh" linenumbers="True"
+computer# sshd -t
+}}}
+
+
 Grep 2 different things:
 {{{code: lang="sh" linenumbers="True"
 computer$ cat text.txt | grep 'words \(opt.1|opt.2\)'

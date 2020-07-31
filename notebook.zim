@@ -9,3 +9,6 @@ shared=True
 endofline=unix
 disable_trash=False
 
+[SpellPlugin]
+language=
+
