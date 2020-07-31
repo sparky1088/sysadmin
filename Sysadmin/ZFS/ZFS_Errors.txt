@@ -1,0 +1,35 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2020-07-31T13:05:21-07:00
+
+====== ZFS Errors ======
+
+
+===== zpool status error =====
+When you run 
+{{{code: lang="sh" linenumbers="True"
+zpool status
+}}}
+
+and it retuns a `DEGRADED` error along with
+{{{code: lang="sh" linenumbers="False"
+The READ and WRITE columns provide a count of I/O errors that occurred on the device, 
+while the CKSUM column provides a count of uncorrectable checksum errors that 
+occurred on the device.
+}}}
+
+
+The second section of the configuration output displays error statistics. These errors are divided into three categories:
+
+* READ – I/O errors that occurred while issuing a read request
+* WRITE – I/O errors that occurred while issuing a write request
+* CKSUM – Checksum errors, meaning that the device returned corrupted data as the result of a read request
+
+These errors can be used to determine if the damage is permanent. A small number of I/O errors might indicate a temporary outage, while a large number might indicate a permanent problem with the device. These errors do not necessarily correspond to data corruption as interpreted by applications. If the device is in a redundant configuration, the devices might show uncorrectable errors, while no errors appear at the mirror or RAID-Z device level. In such cases, ZFS successfully retrieved the good data and attempted to heal the damaged data from existing replicas.
+
+{{{code: lang="sh" linenumbers="False"
+zpool clear
+}}}
+
+is the only method to reset the error counters.
+https://unix.stackexchange.com/questions/341614/understanding-the-error-reporting-of-zfs-on-linux

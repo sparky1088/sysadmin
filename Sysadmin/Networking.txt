@@ -62,14 +62,16 @@ computer# cat /etc/iptables/rules.v4 | iptables-restore
 iperf is a great program for this it will need to be installed on both a client machine and a server machine.
 To start the server:
 {{{code: lang="sh" linenumbers="True"
-iperf -s
+computer# iperf -s
 }}}
 
 To start the client:
 {{{code: lang="sh" linenumbers="True"
-iperf -c ip.of.ser.ver
+computer# iperf -c ip.of.ser.ver
 }}}
 
+
+https://www.cyberciti.biz/faq/how-to-test-the-network-speedthroughput-between-two-linux-servers/
 
 ===== Wierd Interface things: =====
 Interface **NOT** releasing IP Address:
