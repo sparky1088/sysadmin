@@ -1,0 +1,7 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2020-07-31T10:33:04-07:00
+
+====== Sysadmin ======
+Using this for folder structure and hopefully 
+

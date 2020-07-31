@@ -1,0 +1,20 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2020-07-31T10:01:23-07:00
+
+====== Vim ======
+
+If you forget to sudo a file in vim you can always run:
+{{{code: lang="sh" linenumbers="True"
+:w ! sudo tee %
+}}}
+
+
+Sometimes pasting in vim has some weird format errors and paragraphs start to tab over.
+This is fixable with
+{{{code: lang="sh" linenumbers="True"
+:set paste
+i
+}}}
+
+

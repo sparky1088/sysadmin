@@ -1,0 +1,76 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2020-07-31T09:38:21-07:00
+
+====== Networking ======
+This is just a bunch of stuff that I have to look up constantly. I am working on organizing it.
+
+===== IP Tables: =====
+This is to maintain persistent connections for already established sessions so a rule doesnt fork you over when chagning things
+{{{code: lang="sh" linenumbers="True"
+-A INPUT -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT
+}}}
+
+or
+{{{code: lang="sh" linenumbers="True"
+computer# iptables -A INPUT -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT
+}}}
+
+
+To save IP Tables:
+{{{code: lang="sh" linenumbers="True"
+computer# iptables-save > /path/to/file
+}}}
+
+
+To manually restart IP Tables (I had this initially for a raspberry pi):
+{{{code: lang="sh" linenumbers="True"
+computer# iptables-restore < /etc/iptables/rules.v4
+}}}
+
+or
+{{{code: lang="sh" linenumbers="True"
+computer# cat /etc/iptables/rules.v4 | iptables-restore
+}}}
+
+
+
+===== Test network speeds: =====
+iperf is a great program for this it will need to be installed on both a client machine and a server machine.
+To start the server:
+{{{code: lang="sh" linenumbers="True"
+iperf -s
+}}}
+
+To start the client:
+{{{code: lang="sh" linenumbers="True"
+iperf -c ip.of.ser.ver
+}}}
+
+
+===== Wierd Interface things: =====
+Interface **NOT** releasing IP Address:
+{{{code: lang="sh" linenumbers="True"
+computer# sudo ip addr flush interface-name && sudo systemctl restart networking
+}}}
+
+https://askubuntu.com/questions/333063/restart-network-interface-after-editing-etc-network-interfaces
+
+
+==== Useful Ping Notes: ====
+Pretty ping is a useful package
+
+Ping using specific interface
+{{{code: lang="sh" linenumbers="True"
+ping -I eth0 google.com
+}}}
+
+Ping useing specified IP source
+ping -S IP destination
+{{{code: lang="sh" linenumbers="True"
+ping -S 10.0.0.5 google.com
+}}}
+
+https://www.cyberciti.biz/faq/ping-using-specific-gateway-interface-or-source-ip-address/
+
+Usually I cap my ping count with a -C 5 with aliases.

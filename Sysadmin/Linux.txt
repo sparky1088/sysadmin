@@ -1,0 +1,52 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2020-07-31T08:42:02-07:00
+
+====== Generic Linux Notes ======
+
+Repository with a some scripts/configs/etc:
+https://github.com/sparky1088/Linux_Stuff
+
+Useful Programs:
+Zim - used for notes
+[[./Vim.txt|Vim]] - used for editing files
+Ranger - this lets your browse files easily
+
+Grep 2 different things:
+{{{code: lang="sh" linenumbers="True"
+computer$ cat text.txt | grep 'words \(opt.1|opt.2\)'
+}}}
+
+
+Force on box user password change:
+{{{code: lang="sh" linenumbers="True"
+computer# chage -d 0 {user-name}
+}}}
+
+
+To start a process as a job
+{{{code: lang="sh" linenumbers="True"
+computer$ command &
+}}}
+
+List jobs
+{{{code: lang="sh" linenumbers="True"
+computer$ jobs
+}}}
+
+Move job to forground (job_id can be found with the jobs command)
+{{{code: lang="sh" linenumbers="True"
+computer$ fg job_id
+}}}
+
+
+Find all files in a directory that are not hidden:
+{{{code: lang="sh" linenumbers="True"
+find . -maxdepth 6 \( ! -regex '.*/\..*' \) -type f -print0 | xargs -0r ls -lt 
+}}}
+
+
+===== Aliases: =====
+List of alias:
+https://github.com/sparky1088/Linux_Stuff/blob/master/.aliases
+

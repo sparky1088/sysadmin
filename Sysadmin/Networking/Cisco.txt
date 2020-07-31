@@ -1,0 +1,52 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2020-07-31T10:10:41-07:00
+
+====== Cisco ======
+
+The Majority of this will be related exclusively ASA (Adaptive Security Appliance) models.
+
+===== Remove User =====
+{{{code: lang="sh" linenumbers="True"
+ASA# conf t
+ASA# clear configure username USER1
+ASA# wr mem
+}}}
+
+
+===== Add Remote Access User (vpn) =====
+{{{code: lang="sh" linenumbers="True"
+ASA# username USER1 password SomeSecurePassword
+ASA# username USER1 attributes
+ vpn-group-policy VPNPolicy
+ service-type remote-access
+ASA# wr mem
+}}}
+
+
+===== ASA VPN Checks =====
+Check Phase1 Tunnel
+{{{code: lang="sh" linenumbers="True"
+ASA# show crypto isakmp sa detail | b [peer IP add]
+}}}
+
+Check Phase2 Tunnel
+{{{code: lang="sh" linenumbers="True"
+ASA# show crypto ipsec sa peer [peer IP add]
+}}}
+
+Display the PSK
+{{{code: lang="sh" linenumbers="True"
+ASA# more system:running-config | b tunnel-group [peer IP add]
+}}}
+
+Display Uptime, etc.
+{{{code: lang="sh" linenumbers="True"
+ASA# sh vpn-sessiondb detail l2l | b [peer IP add]
+ASA# show vpn-sessiondb detail l2l filter name <peer_address>
+}}}
+
+Clear and restart tunnel
+{{{code: lang="sh" linenumbers="True"
+ASA# clear ipsec sa peer <remote-peer-IP>
+}}}
