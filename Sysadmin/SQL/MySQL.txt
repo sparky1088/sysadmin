@@ -42,6 +42,13 @@ mysql> UPDATE wp_postmeta SET meta_value = replace(meta_value,'https://oldurl','
 
 6. I usually double check these with select queries.
 
+===== MySQL Dump with where clause =====
+You can specify a where statement in a mysql dump.
+{{{code: lang="sh" linenumbers="True"
+mysqldump -t {-u User_Name -p} DB_Name Table_Name --where="Column_name = VALUE"
+}}}
+
+
 ===== Large SQL Files =====
 You can import large files this command line way:
 {{{code: lang="sh" linenumbers="True"
@@ -95,7 +102,7 @@ mysql> DELETE USER 'USER1'@'127.0.0.1' IDENTIFIED BY 'SomeSecurePassword';
 mysql> DROP USER 'USER1'@'127.0.0.1';
 
 mysql> CREATE USER 'USER1'@'localhost' IDENTIFIED BY 'VsJqEo!&E$DBSkuVCqd';
-mysql> GRANT SELECT, UPDATE, INSERT, DELETE ON psa_appliance.sso_mapping TO USER1@'localhost';
+mysql> GRANT SELECT, UPDATE, INSERT, DELETE ON database_name.table_name TO USER1@'localhost';
 
 mysql> GRANT FILE ON *.* to USER1@'localhost';
 }}}

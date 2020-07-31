@@ -5,6 +5,8 @@ Creation-Date: 2020-07-31T09:39:13-07:00
 ====== Mikrotik ======
 
 ===== NAT (Network Address Translation) =====
+In order to NAT any address you have to give Mikrotik the address. 
+This is done under IP > Addresses
 
 ===== Hairpin NAT =====
 hairpin nat on a mikrotik so things resolve correctly internally
