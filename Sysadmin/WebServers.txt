@@ -14,7 +14,7 @@ Creating Self-Signed SSL Certificate
 To create a new Self-Signed SSL Certificate, use the openssl req command:
 
 {{{code: lang="sh" linenumbers="True"
-openssl req -newkey rsa:4096 \
+computer# openssl req -newkey rsa:4096 \
 			-x509 \
 			-sha256 \
 			-days 3650 \

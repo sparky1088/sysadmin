@@ -8,23 +8,23 @@ This is just a bunch of stuff that I have to look up constantly. I am working on
 ===== TCP Dump: =====
 Basic tcpdump to host with port:
 {{{code: lang="sh" linenumbers="True"
-tcpdump -i <interface OR any> host <host IP for src or dst> and port <port>
+computer# tcpdump -i <interface OR any> host <host IP for src or dst> and port <port>
 }}}
 
 write to file with verbose output to a specific host:
 {{{code: lang="sh" linenumbers="True"
-sudo tcpdump -vvv -n host 123.45.67.89 -w capture.cap
+computer# sudo tcpdump -vvv -n host 123.45.67.89 -w capture.cap
 }}}
 
 read cap file (you can also import this into wireshark):
 {{{code: lang="sh" linenumbers="True"
-tcpdump -r capture.cap
+computer# tcpdump -r capture.cap
 }}}
 
 I think this is looking for a specific time in a capture file (when you do this make sure to note that the timestamps i believe come from the machine where the capture happened) 12:30 specifically im not sure what the secondary grep was
 {{{code: lang="sh" linenumbers="True"
-tcpdump -l -n -r capture2.cap ip |grep "^12:3" >12:3.txt
-grep "37\.43947" 12.3.txt >12.3.port43947.txt
+computer# tcpdump -l -n -r capture2.cap ip |grep "^12:3" >12:3.txt
+computer# grep "37\.43947" 12.3.txt >12.3.port43947.txt
 }}}
 
 
@@ -93,10 +93,10 @@ ipcalc <ADDRESS>/<NETMASK> --s a b c
 							where a b c fits in.
 Examples:
 {{{code: lang="sh" linenumbers="True"
-ipcalc 192.168.0.1/24
-ipcalc 192.168.0.1/255.255.128.0
-ipcalc 192.168.0.1 255.255.128.0 255.255.192.0
-ipcalc 192.168.0.1 0.0.63.255
+computer# ipcalc 192.168.0.1/24
+computer# ipcalc 192.168.0.1/255.255.128.0
+computer# ipcalc 192.168.0.1 255.255.128.0 255.255.192.0
+computer# ipcalc 192.168.0.1 0.0.63.255
 }}}
 
 
@@ -105,7 +105,7 @@ ipcalc 192.168.0.1 0.0.63.255
 ===== Nmap =====
 scan subnet and output file to xml with a quick scan
 {{{code: lang="sh" linenumbers="False"
-nmap 192.168.1.0/24 -oX scan.xml
+computer# nmap 192.168.1.0/24 -oX scan.xml
 }}}
 
 //-p-// in order to scann all ports
@@ -117,7 +117,7 @@ There are also scripts using the nmap scripting engine that do various things. T
 
 Scan for CVE detection 
 {{{code: lang="sh" linenumbers="False"
-nmap -Pn --script vuln 192.168.1.10
+computer# nmap -Pn --script vuln 192.168.1.10
 }}}
 
 
@@ -128,52 +128,52 @@ https://securitytrails.com/blog/top-15-nmap-commands-to-scan-remote-hosts
 Zenmap list of commands:
 Intense Scan
 {{{code: lang="sh" linenumbers="False"
-nmap -T4 -A -v
+computer# nmap -T4 -A -v
 }}}
 
 Intense scan plus UDP
 {{{code: lang="sh" linenumbers="False"
-nmap -sS -sU -T4 -A -v
+computer# nmap -sS -sU -T4 -A -v
 }}}
 
 Intense scan, all TCP ports
 {{{code: lang="sh" linenumbers="False"
-Command: nmap -p 1-65535 -T4 -A -v 
+computer# nmap -p 1-65535 -T4 -A -v 
 }}}
 
 Intense scan, no ping
 {{{code: lang="sh" linenumbers="False"
-nmap -T4 -A -v -Pn
+computer# nmap -T4 -A -v -Pn
 }}}
 
 Ping Scan
 {{{code: lang="sh" linenumbers="False"
-nmap -sn
+computer# nmap -sn
 }}}
 
 Quick Scan
 {{{code: lang="sh" linenumbers="False"
-nmap -T4 -F
+computer# nmap -T4 -F
 }}}
 
 Quick Scan Plus
 {{{code: lang="sh" linenumbers="False"
-nmap -sV -T4 -O -F -version-light
+computer# nmap -sV -T4 -O -F -version-light
 }}}
 
 Quick Traceroute
 {{{code: lang="sh" linenumbers="False"
-nmap -sn -traceroute
+computer# nmap -sn -traceroute
 }}}
 
 Regular Scan
 {{{code: lang="sh" linenumbers="False"
-nmap
+computer# nmap
 }}}
 
 Slow Comprehenseive Scan
 {{{code: lang="sh" linenumbers="False"
-nmap -sS -sU -T4 -A -v -PE -PP -PS80,443 -PA3389 -PU40125 -PY -g 53 –script “default or (discovery and safe)” 
+computer# nmap -sS -sU -T4 -A -v -PE -PP -PS80,443 -PA3389 -PU40125 -PY -g 53 –script “default or (discovery and safe)” 
 }}}
 
 https://www.securesolutions.no/zenmap-preset-scans/
@@ -185,13 +185,13 @@ Pretty ping is a useful package
 
 Ping using specific interface
 {{{code: lang="sh" linenumbers="True"
-ping -I eth0 google.com
+computer# ping -I eth0 google.com
 }}}
 
 Ping useing specified IP source
 ping -S IP destination
 {{{code: lang="sh" linenumbers="True"
-ping -S 10.0.0.5 google.com
+computer# ping -S 10.0.0.5 google.com
 }}}
 
 https://www.cyberciti.biz/faq/ping-using-specific-gateway-interface-or-source-ip-address/

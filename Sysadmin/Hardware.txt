@@ -1,0 +1,24 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2020-08-03T11:35:38-07:00
+
+====== Hardware ======
+
+Sometimes it is hardware that is going bad.
+
+===== SmartCTL =====
+smartmontools or smartctl allows us to check harddrives. 
+{{{code: lang="sh" linenumbers="False"
+computer# smartctl -a /dev/sda
+}}}
+
+
+https://www.cyberciti.biz/tips/linux-find-out-if-harddisk-failing.html
+
+If a device is in a raid or sas it is a little different
+{{{code: lang="sh" linenumbers="False"
+computer# smartctl -d scsi --all /dev/sgX
+}}}
+
+
+https://www.cyberciti.biz/faq/linux-checking-sas-sata-disks-behind-adaptec-raid-controllers/

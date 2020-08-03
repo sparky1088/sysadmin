@@ -6,7 +6,7 @@ Creation-Date: 2020-08-03T10:16:32-07:00
 
 ecryptfs is a way to encrypt parts of a machine. 
 {{{code: lang="sh" linenumbers="False"
-mount -t ecryptfs /folder/.encrypted_location /folder/mount_location
+computer# mount -t ecryptfs /folder/.encrypted_location /folder/mount_location
 }}}
 
 
