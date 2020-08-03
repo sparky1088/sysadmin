@@ -1,0 +1,11 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2020-08-03T08:41:11-07:00
+
+====== Samba ======
+
+When a server went down due to some issues even after copying files over I couldn't get users to authenticate to smb.
+I think it had something to do with the passwords not being created in the database from the ldap server. What I ended up doing is copying the ///var/lib/samba/// directory which included the //passdb.tdb// and I think this is what fixed it.
+
+I usually copy the existing ///etc/smb/* // from backup or from the existing server.
+

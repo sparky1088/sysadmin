@@ -1,0 +1,20 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2020-08-03T08:11:52-07:00
+
+====== Google Helps ======
+
+===== GAM =====
+GAM is a great tool for gsuite administration. There are a few different versions. There are a few different versions available. The most advanced version is the one listed below which adds lots of additional commands.
+
+https://github.com/taers232c/GAMADV-XTD3/wiki
+
+One of the things this version was needed for was empting trash from a team drive
+{{{code: lang="sh" linenumbers="False"
+~/bin/gamadv-xtd3/gam user admin.username empty drivetrash DRIVE_ID
+}}}
+
+
+===== Drive Space =====
+To see what is taking up the most space on google drive look at the quota page. It will list the largest files.
+https://drive.google.com/drive/u/0/quota

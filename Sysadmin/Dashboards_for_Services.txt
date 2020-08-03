@@ -1,0 +1,24 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2020-08-03T08:16:50-07:00
+
+====== Dashboards for Services ======
+These are not always up to date for outages (eg sometimes an outage happens and it doesnt get reported until after it is over) but it is always worth checking to see if it is happening.
+
+==== Gsuite ====
+https://www.google.com/appsstatus#hl=en&v=status
+
+==== Atlassian ====
+https://status.atlassian.com/
+
+==== Jira ====
+https://jira-software.status.atlassian.com/
+
+==== Gitlab ====
+https://status.gitlab.com/
+
+==== Sucuri ====
+https://status.sucuri.net/
+
+==== SolarWinds Samanage ====
+https://status.samanage.com/

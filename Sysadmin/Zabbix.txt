@@ -1,0 +1,34 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2020-08-03T10:30:09-07:00
+
+====== Zabbix ======
+
+===== Encryption =====
+Zabbix supports a few different ways of encryption. Use the documentation for the appropiate version.
+https://www.zabbix.com/documentation/3.0/manual/encryption
+https://www.zabbix.com/forum/zabbix-troubleshooting-and-problems/51955-how-to-setup-psk-encryption
+
+
+===== zabbix_get =====
+zabbix_get is used from the commandline to pull values of keys zabbix monitors.
+If you have an interface set up on the machine itself rather than using NAT make sure to use the -I ip.add.re.ss option.
+eg:
+{{{code: lang="sh" linenumbers="False"
+zabbix_get -s agent.machine.address -I server.ip.address -k "system.cpu.load[,avg1]"
+}}}
+
+otherwise if you are using NAT make sure the agent file has the internal ip or dns name for the server or the commands wont work.
+{{{code: lang="sh" linenumbers="False"
+Server=zabbix.internal,192.168.1.15
+ServerActive=zabbix.internal,192.168.1.15
+}}}
+
+The command for an internal is almost the same
+{{{code: lang="sh" linenumbers="False"
+zabbix_get -s agent.machine.address -k "system.cpu.load[,avg1]"
+}}}
+
+
+Here is a list of things supported:
+https://www.zabbix.com/documentation/3.0/manual/appendix/items/supported_by_platform

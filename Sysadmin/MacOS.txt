@@ -1,0 +1,18 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2020-08-03T08:14:05-07:00
+
+====== MacOS ======
+
+I don't do much using a Mac, most things work on unix and for most tools you can find a solution.
+sshfs is a great tool to install in my oppinion.
+
+=== Restoring a Mac ===
+When restoring a Mac, permissions may change or get messed up so you will have to probably reconfigure them. This happened once before where bash stopped working entirely.
+
+===== VPN =====
+For some reason when [[MacOS]] gets updated it will sometimes cause a VPN to stop working (same thing happens with windows sometimes) I usually just recreate the VPN and it works fine.
+
+===== Display Link =====
+I don't do much on mac but one of the things I have had to do a number of times is install display link drivers.
+https://www.displaylink.com/downloads/macos

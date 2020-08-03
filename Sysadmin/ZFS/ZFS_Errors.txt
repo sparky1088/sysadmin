@@ -4,10 +4,21 @@ Creation-Date: 2020-07-31T13:05:21-07:00
 
 ====== ZFS Errors ======
 
+===== ZFS NFS =====
+For some reason sometimes i have to reshare the nfs settings on zfs mount points
+{{{code: lang="sh" linenumbers="False"
+zfs set sharenfs=rw=123.45.67.89/24,crossmnt,no_root_squash data/san
+}}}
+
+as well as sometimes having to restart the nfs kernel
+{{{code: lang="sh" linenumbers="False"
+systemctl start nfs-kernel-server
+}}}
+
 
 ===== zpool status error =====
 When you run 
-{{{code: lang="sh" linenumbers="True"
+{{{code: lang="sh" linenumbers="False"
 zpool status
 }}}
 

@@ -1,0 +1,30 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2020-08-03T08:44:23-07:00
+
+====== PAM Ldap ======
+
+Usually what I do is install //ldap-utils ldapscripts libldap-2.4 libldap-common libnss-ldap //and// libpam-ldap.//
+I also copy the configs from other servers for the files: 
+///etc/pam_ldap.conf //
+///etc/nsswitch.conf//
+///etc/ldap/ldap.conf//
+
+I then restart nscd.
+
+Sometimes when adding ldap authentication to a new server using PAM. I found that you have to install //libpam-ldap// and //libpam-ldapd// as well  due to the config file being in a different location. It usually goes through the same prompts as the other for the config.
+
+https://unix.stackexchange.com/questions/416731/ldap-and-pam-working-for-gui-login-but-not-ssh
+The comment we are intersted in is here
+{{{code: lang="sh" linenumbers="False"
+I found the problem. One of the guides I found on Google instructed me to do
+
+apt-get libnss-ldap libpam-ldap nslcd
+
+I also later found an article that said that libpam-ldapd is newer than libpam-ldap and installed that instead.
+
+libnss-ldap prompts you for some configuration and creates a /etc/libnss-ldap.conf file. Then libpam-ldap uninstalls libnss-ldap but leaves its config file behind. Apparently that config file is still meaningful because that's the one it's using and I had an error in the binddn in that file. After fixing the binddn, it worked.
+
+I really don't know why you'd install both of those ldap modules. After getting the first client VM working, I setup another client VM using just libpam-ldapd and nslcd and it worked first time.
+}}}
+

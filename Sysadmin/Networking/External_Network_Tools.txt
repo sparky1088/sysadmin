@@ -1,0 +1,21 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2020-08-03T08:21:01-07:00
+
+====== External Network Tools ======
+
+==== IP Lookup Tool ====
+Gives info about an ip address (who owns it etc)
+https://www.robtex.com/ip-lookup/8.8.8.8
+
+==== Google Public DNS Query ====
+I'm not 100% sure how to use this yet but it queries google dns for things.
+https://dns.google.com/query?name=23.20.66.249&type=ANY&dnssec=true
+
+==== IP Tracker ====
+Find where an IP is located
+http://www.ip-tracker.org/locator/ip-lookup.php?ip=8.8.8.8
+
+==== GeoPeeker ====
+Check a site from another location
+https://geopeeker.com/
