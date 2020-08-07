@@ -44,3 +44,5 @@ zpool clear
 
 is the only method to reset the error counters.
 https://unix.stackexchange.com/questions/341614/understanding-the-error-reporting-of-zfs-on-linux
+
+

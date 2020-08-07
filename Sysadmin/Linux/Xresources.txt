@@ -1,0 +1,17 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2020-08-07T08:32:10-07:00
+
+====== Xresources ======
+
+I don't often change anything related to x and i mostly only use xrdp for funny little things, however the other day I came accross something where xclock would not work correctly in the file and ended up making a new file for it and wasnt sure how to add it.
+
+inside [[~/.Xresources]]
+add a line:
+#include ".Xresources.d/xterm"
+
+but in order to just merge the file temporarily
+{{{code: lang="sh" linenumbers="False"
+computer$ xrdb -merge xclock
+}}}
+

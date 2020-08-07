@@ -197,3 +197,5 @@ computer# ping -S 10.0.0.5 google.com
 https://www.cyberciti.biz/faq/ping-using-specific-gateway-interface-or-source-ip-address/
 
 Usually I cap my ping count with a -C 5 with aliases.
+
+

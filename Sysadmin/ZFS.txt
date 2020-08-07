@@ -4,3 +4,11 @@ Creation-Date: 2020-07-31T12:55:03-07:00
 
 ====== ZFS ======
 
+ZFS Snapshots of file systems are accessible in the //.zfs/snapshot// directory within the root of the file system. For example, if //tank/home/cindy// is mounted on ///home/cindy//, then the //tank/home/cindy@thursday// snapshot data is accessible in the ///home/cindy/.zfs/snapshot/thursday// directory.
+
+https://docs.oracle.com/cd/E36784_01/html/E36835/gbiqe.html
+
+
+Useful Resources:
+https://www.reddit.com/r/zfs/
+https://zfsonlinux.topicbox.com/latest

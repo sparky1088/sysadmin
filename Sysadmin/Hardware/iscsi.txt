@@ -1,0 +1,30 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2020-08-06T14:46:43-07:00
+
+====== iscsi ======
+
+restart iscsi service
+{{{code: lang="sh" linenumbers="False"
+computer# systemctl status iscsid
+computer# systemctl restart iscsid
+}}}
+
+
+List node record:
+{{{code: lang="sh" linenumbers="False"
+computer# iscsiadm --mode node
+}}}
+
+
+take the result of that for the name and list all give node record
+{{{code: lang="sh" linenumbers="False"
+computer# iscsiadm --mode node --targetname iqn.name.of.iscsi --portal ip.of.isc.si
+}}}
+
+an example:
+{{{code: lang="sh" linenumbers="False"
+computer# iscsiadm --mode node --targetname iqn.2001-05.com.doe:test --portal 192.168.1.1:3260
+}}}
+
+https://www.thegeekdiary.com/iscsi-connection-command-examples-cheat-sheet/

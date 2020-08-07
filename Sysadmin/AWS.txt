@@ -1,0 +1,8 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2020-08-04T09:21:01-07:00
+
+====== AWS ======
+
+AWS is a beast and honestly I won't claim to understand the majority of it. The documentation is decent on AWS iteself. We also use Fugue which has good documentation.
+

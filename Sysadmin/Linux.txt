@@ -13,47 +13,53 @@ Zim - used for notes
 Ranger - this lets your browse files easily
 
 Check sshd config
-{{{code: lang="sh" linenumbers="True"
+{{{code: lang="sh" linenumbers="False"
 computer# sudo /usr/sbin/sshd -t
 }}}
 
 or
-{{{code: lang="sh" linenumbers="True"
+{{{code: lang="sh" linenumbers="False"
 computer# sshd -t
 }}}
 
 
 Grep 2 different things:
-{{{code: lang="sh" linenumbers="True"
+{{{code: lang="sh" linenumbers="False"
 computer$ cat text.txt | grep 'words \(opt.1|opt.2\)'
 }}}
 
 
 Force on box user password change:
-{{{code: lang="sh" linenumbers="True"
+{{{code: lang="sh" linenumbers="False"
 computer# chage -d 0 {user-name}
 }}}
 
 
 To start a process as a job
-{{{code: lang="sh" linenumbers="True"
+{{{code: lang="sh" linenumbers="False"
 computer$ command &
 }}}
 
 List jobs
-{{{code: lang="sh" linenumbers="True"
+{{{code: lang="sh" linenumbers="False"
 computer$ jobs
 }}}
 
 Move job to forground (job_id can be found with the jobs command)
-{{{code: lang="sh" linenumbers="True"
+{{{code: lang="sh" linenumbers="False"
 computer$ fg job_id
 }}}
 
 
 Find all files in a directory that are not hidden:
-{{{code: lang="sh" linenumbers="True"
-find . -maxdepth 6 \( ! -regex '.*/\..*' \) -type f -print0 | xargs -0r ls -lt 
+{{{code: lang="sh" linenumbers="False"
+computer$ find . -maxdepth 6 \( ! -regex '.*/\..*' \) -type f -print0 | xargs -0r ls -lt 
+}}}
+
+
+Change file extensions (html to php but you get the gist):
+{{{code: lang="sh" linenumbers="False"
+computer$ for x in *.html; do mv "$x" "${x%.html}.php"; done
 }}}
 
 
@@ -61,3 +67,14 @@ find . -maxdepth 6 \( ! -regex '.*/\..*' \) -type f -print0 | xargs -0r ls -lt
 List of alias:
 https://github.com/sparky1088/Linux_Stuff/blob/master/.aliases
 
+--------------------
+
+==== l2tp VPN ====
+For some reason the default ubuntu (at least on 16 and 18 when i last checked) did not have support for l2tp vpns. I had to disable the xl2tp service as well but that may no longer be nesasary.
+
+1. Install network-manager-l2tp network-manager-l2tp-gnome (I think xl2tpd was installed by default)
+2. Stop the xl2tp service sudo systemctl stop xl2tpd.service
+3. Disable the xl2tp service sudo systemctl disable xl2tpd.service
+4. You may need to restart
+5. In the Phase1 Algorithms use 3des-sha1-modp1024
+6. In the Phase2 algorithms use 3des-sha1
