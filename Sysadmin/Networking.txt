@@ -178,6 +178,13 @@ computer# nmap -sS -sU -T4 -A -v -PE -PP -PS80,443 -PA3389 -PU40125 -PY -g 53 â€
 
 https://www.securesolutions.no/zenmap-preset-scans/
 
+Recently I coldn't get the xml to load in a webpage so I neded up using xlstproc (I had to install the package)
+{{{code: lang="sh" linenumbers="False"
+$ xsltproc scan.xml -o scan.html
+}}}
+
+
+
 --------------------
 
 ==== Useful Ping Notes: ====
@@ -197,5 +204,20 @@ computer# ping -S 10.0.0.5 google.com
 https://www.cyberciti.biz/faq/ping-using-specific-gateway-interface-or-source-ip-address/
 
 Usually I cap my ping count with a -C 5 with aliases.
+
+--------------------
+
+==== Ubuntu DNS ====
+For a problem with local cache:
+{{{code: lang="sh" linenumbers="False"
+computer# sudo systemctl status systemd-resolved
+}}}
+
+I found this because dig, host and nslookup all returned something old while the dns servers returned the new one when I did a dig against them specifically. I noticed port 53 had systemd-resolve running on it using ss -tupln | grep 53 (alternative to netstat)
+
+To show what your dns servers are in the network manager you have to use the nmcli
+{{{code: lang="sh" linenumbers="False"
+computer# nmcli device show <interfacename> | grep IP4.DNS
+}}}
 
 

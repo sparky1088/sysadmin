@@ -14,7 +14,7 @@ mysql> create database `new-db-name`;
 2. Create user with specific access: 
 {{{code: lang="sql" linenumbers="True"
 mysql> CREATE USER 'newuser'@'localhost' IDENTIFIED BY 'password';
-mysql> GRANT USAGE ON *.* TO 'kb-uk-new'@'localhost'; GRANT ALL PRIVILEGES ON `kb-uk-new`.* TO 'kb-uk-new'@'localhost';
+mysql> GRANT USAGE ON *.* TO 'kb-uk-new'@'localhost'; GRANT ALL PRIVILEGES ON `database`.* TO 'user'@'localhost';
 mysql> FLUSH PRIVILEGES;
 }}}
 
