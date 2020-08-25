@@ -8,16 +8,19 @@ We had some drives that were defaulted to the HFS file system and I couldn't get
 First, make sure that you have hfsprogs installed. Example installation command:
 {{{code: lang="sh" linenumbers="False"
 computer# sudo apt-get install hfsprogs
+
 }}}
 
 Next, mount or remount the HFS+ drive; commands need to be as follows:
 {{{code: lang="sh" linenumbers="False"
 computer# sudo mount -t hfsplus -o force,rw /dev/sdXY /media/mntpoint
+
 }}}
 
 or
 {{{code: lang="sh" linenumbers="False"
 computer# sudo mount -t hfsplus -o remount,force,rw /mount/point
+
 }}}
 
 

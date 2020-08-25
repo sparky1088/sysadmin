@@ -8,11 +8,13 @@ Creation-Date: 2020-07-31T13:05:21-07:00
 For some reason sometimes i have to reshare the nfs settings on zfs mount points
 {{{code: lang="sh" linenumbers="False"
 zfs set sharenfs=rw=123.45.67.89/24,crossmnt,no_root_squash data/san
+
 }}}
 
 as well as sometimes having to restart the nfs kernel
 {{{code: lang="sh" linenumbers="False"
 systemctl start nfs-kernel-server
+
 }}}
 
 
@@ -20,6 +22,7 @@ systemctl start nfs-kernel-server
 When you run 
 {{{code: lang="sh" linenumbers="False"
 zpool status
+
 }}}
 
 and it retuns a `DEGRADED` error along with
@@ -27,6 +30,7 @@ and it retuns a `DEGRADED` error along with
 The READ and WRITE columns provide a count of I/O errors that occurred on the device, 
 while the CKSUM column provides a count of uncorrectable checksum errors that 
 occurred on the device.
+
 }}}
 
 
@@ -40,9 +44,11 @@ These errors can be used to determine if the damage is permanent. A small number
 
 {{{code: lang="sh" linenumbers="False"
 zpool clear
+
 }}}
 
 is the only method to reset the error counters.
 https://unix.stackexchange.com/questions/341614/understanding-the-error-reporting-of-zfs-on-linux
 
+I have also seen this when an iscsi device was not correctly showing as a device and had to login to it again. See [[../../Hardware/iscsi.txt|iscsi]]
 

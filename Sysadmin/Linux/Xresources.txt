@@ -13,5 +13,6 @@ add a line:
 but in order to just merge the file temporarily
 {{{code: lang="sh" linenumbers="False"
 computer$ xrdb -merge xclock
+
 }}}
 

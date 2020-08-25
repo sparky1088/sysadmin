@@ -9,22 +9,26 @@ This is just a bunch of stuff that I have to look up constantly. I am working on
 Basic tcpdump to host with port:
 {{{code: lang="sh" linenumbers="True"
 computer# tcpdump -i <interface OR any> host <host IP for src or dst> and port <port>
+
 }}}
 
 write to file with verbose output to a specific host:
 {{{code: lang="sh" linenumbers="True"
 computer# sudo tcpdump -vvv -n host 123.45.67.89 -w capture.cap
+
 }}}
 
 read cap file (you can also import this into wireshark):
 {{{code: lang="sh" linenumbers="True"
 computer# tcpdump -r capture.cap
+
 }}}
 
 I think this is looking for a specific time in a capture file (when you do this make sure to note that the timestamps i believe come from the machine where the capture happened) 12:30 specifically im not sure what the secondary grep was
 {{{code: lang="sh" linenumbers="True"
 computer# tcpdump -l -n -r capture2.cap ip |grep "^12:3" >12:3.txt
 computer# grep "37\.43947" 12.3.txt >12.3.port43947.txt
+
 }}}
 
 
@@ -32,28 +36,33 @@ computer# grep "37\.43947" 12.3.txt >12.3.port43947.txt
 This is to maintain persistent connections for already established sessions so a rule doesnt fork you over when chagning things
 {{{code: lang="sh" linenumbers="True"
 -A INPUT -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT
+
 }}}
 
 or
 {{{code: lang="sh" linenumbers="True"
 computer# iptables -A INPUT -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT
+
 }}}
 
 
 To save IP Tables:
 {{{code: lang="sh" linenumbers="True"
 computer# iptables-save > /path/to/file
+
 }}}
 
 
 To manually restart IP Tables (I had this initially for a raspberry pi):
 {{{code: lang="sh" linenumbers="True"
 computer# iptables-restore < /etc/iptables/rules.v4
+
 }}}
 
 or
 {{{code: lang="sh" linenumbers="True"
 computer# cat /etc/iptables/rules.v4 | iptables-restore
+
 }}}
 
 
@@ -63,11 +72,13 @@ iperf is a great program for this it will need to be installed on both a client 
 To start the server:
 {{{code: lang="sh" linenumbers="True"
 computer# iperf -s
+
 }}}
 
 To start the client:
 {{{code: lang="sh" linenumbers="True"
 computer# iperf -c ip.of.ser.ver
+
 }}}
 
 
@@ -77,6 +88,7 @@ https://www.cyberciti.biz/faq/how-to-test-the-network-speedthroughput-between-tw
 Interface **NOT** releasing IP Address:
 {{{code: lang="sh" linenumbers="True"
 computer# sudo ip addr flush interface-name && sudo systemctl restart networking
+
 }}}
 
 https://askubuntu.com/questions/333063/restart-network-interface-after-editing-etc-network-interfaces
@@ -97,6 +109,7 @@ computer# ipcalc 192.168.0.1/24
 computer# ipcalc 192.168.0.1/255.255.128.0
 computer# ipcalc 192.168.0.1 255.255.128.0 255.255.192.0
 computer# ipcalc 192.168.0.1 0.0.63.255
+
 }}}
 
 
@@ -106,6 +119,7 @@ computer# ipcalc 192.168.0.1 0.0.63.255
 scan subnet and output file to xml with a quick scan
 {{{code: lang="sh" linenumbers="False"
 computer# nmap 192.168.1.0/24 -oX scan.xml
+
 }}}
 
 //-p-// in order to scann all ports
@@ -118,6 +132,7 @@ There are also scripts using the nmap scripting engine that do various things. T
 Scan for CVE detection 
 {{{code: lang="sh" linenumbers="False"
 computer# nmap -Pn --script vuln 192.168.1.10
+
 }}}
 
 
@@ -129,51 +144,61 @@ Zenmap list of commands:
 Intense Scan
 {{{code: lang="sh" linenumbers="False"
 computer# nmap -T4 -A -v
+
 }}}
 
 Intense scan plus UDP
 {{{code: lang="sh" linenumbers="False"
 computer# nmap -sS -sU -T4 -A -v
+
 }}}
 
 Intense scan, all TCP ports
 {{{code: lang="sh" linenumbers="False"
 computer# nmap -p 1-65535 -T4 -A -v 
+
 }}}
 
 Intense scan, no ping
 {{{code: lang="sh" linenumbers="False"
 computer# nmap -T4 -A -v -Pn
+
 }}}
 
 Ping Scan
 {{{code: lang="sh" linenumbers="False"
 computer# nmap -sn
+
 }}}
 
 Quick Scan
 {{{code: lang="sh" linenumbers="False"
 computer# nmap -T4 -F
+
 }}}
 
 Quick Scan Plus
 {{{code: lang="sh" linenumbers="False"
 computer# nmap -sV -T4 -O -F -version-light
+
 }}}
 
 Quick Traceroute
 {{{code: lang="sh" linenumbers="False"
 computer# nmap -sn -traceroute
+
 }}}
 
 Regular Scan
 {{{code: lang="sh" linenumbers="False"
 computer# nmap
+
 }}}
 
 Slow Comprehenseive Scan
 {{{code: lang="sh" linenumbers="False"
-computer# nmap -sS -sU -T4 -A -v -PE -PP -PS80,443 -PA3389 -PU40125 -PY -g 53 –script “default or (discovery and safe)” 
+computer# nmap -sS -sU -T4 -A -v -PE -PP -PS80,443 -PA3389 -PU40125 -PY -g 53 –script “default or (discovery and safe)”
+ 
 }}}
 
 https://www.securesolutions.no/zenmap-preset-scans/
@@ -181,6 +206,7 @@ https://www.securesolutions.no/zenmap-preset-scans/
 Recently I coldn't get the xml to load in a webpage so I neded up using xlstproc (I had to install the package)
 {{{code: lang="sh" linenumbers="False"
 $ xsltproc scan.xml -o scan.html
+
 }}}
 
 
@@ -193,12 +219,14 @@ Pretty ping is a useful package
 Ping using specific interface
 {{{code: lang="sh" linenumbers="True"
 computer# ping -I eth0 google.com
+
 }}}
 
 Ping useing specified IP source
 ping -S IP destination
 {{{code: lang="sh" linenumbers="True"
 computer# ping -S 10.0.0.5 google.com
+
 }}}
 
 https://www.cyberciti.biz/faq/ping-using-specific-gateway-interface-or-source-ip-address/
@@ -206,18 +234,4 @@ https://www.cyberciti.biz/faq/ping-using-specific-gateway-interface-or-source-ip
 Usually I cap my ping count with a -C 5 with aliases.
 
 --------------------
-
-==== Ubuntu DNS ====
-For a problem with local cache:
-{{{code: lang="sh" linenumbers="False"
-computer# sudo systemctl status systemd-resolved
-}}}
-
-I found this because dig, host and nslookup all returned something old while the dns servers returned the new one when I did a dig against them specifically. I noticed port 53 had systemd-resolve running on it using ss -tupln | grep 53 (alternative to netstat)
-
-To show what your dns servers are in the network manager you have to use the nmcli
-{{{code: lang="sh" linenumbers="False"
-computer# nmcli device show <interfacename> | grep IP4.DNS
-}}}
-
 

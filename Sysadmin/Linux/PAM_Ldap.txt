@@ -26,5 +26,6 @@ I also later found an article that said that libpam-ldapd is newer than libpam-l
 libnss-ldap prompts you for some configuration and creates a /etc/libnss-ldap.conf file. Then libpam-ldap uninstalls libnss-ldap but leaves its config file behind. Apparently that config file is still meaningful because that's the one it's using and I had an error in the binddn in that file. After fixing the binddn, it worked.
 
 I really don't know why you'd install both of those ldap modules. After getting the first client VM working, I setup another client VM using just libpam-ldapd and nslcd and it worked first time.
+
 }}}
 

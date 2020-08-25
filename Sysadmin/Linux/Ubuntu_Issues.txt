@@ -12,11 +12,31 @@ Creation-Date: 2020-08-07T09:12:58-07:00
 Sound not working correctly
 {{{code: lang="sh" linenumbers="False"
 killall pulseaudio; rm -r ~/.config/pulse/* ; rm -r ~/.pulse*
+
 }}}
 
 wait ten seconds, then run this: 
 {{{code: lang="sh" linenumbers="False"
 pulseaudio -k 
+
 }}}
 
 https://help.ubuntu.com/community/SoundTroubleshootingProcedure
+
+
+==== Ubuntu DNS ====
+For a problem with local cache:
+{{{code: lang="sh" linenumbers="False"
+computer# sudo systemctl status systemd-resolved
+
+}}}
+
+I found this because dig, host and nslookup all returned something old while the dns servers returned the new one when I did a dig against them specifically. I noticed port 53 had systemd-resolve running on it using ss -tupln | grep 53 (alternative to netstat)
+
+To show what your dns servers are in the network manager you have to use the nmcli
+{{{code: lang="sh" linenumbers="False"
+computer# nmcli device show <interfacename> | grep IP4.DNS
+
+}}}
+
+

@@ -15,51 +15,60 @@ Ranger - this lets your browse files easily
 Check sshd config
 {{{code: lang="sh" linenumbers="False"
 computer# sudo /usr/sbin/sshd -t
+
 }}}
 
 or
 {{{code: lang="sh" linenumbers="False"
 computer# sshd -t
+
 }}}
 
 
 Grep 2 different things:
 {{{code: lang="sh" linenumbers="False"
 computer$ cat text.txt | grep 'words \(opt.1|opt.2\)'
+
 }}}
 
 
 Force on box user password change:
 {{{code: lang="sh" linenumbers="False"
 computer# chage -d 0 {user-name}
+
 }}}
 
 
 To start a process as a job
 {{{code: lang="sh" linenumbers="False"
 computer$ command &
+
 }}}
 
 List jobs
 {{{code: lang="sh" linenumbers="False"
 computer$ jobs
+
 }}}
 
 Move job to forground (job_id can be found with the jobs command)
 {{{code: lang="sh" linenumbers="False"
 computer$ fg job_id
+
 }}}
 
 
 Find all files in a directory that are not hidden:
 {{{code: lang="sh" linenumbers="False"
-computer$ find . -maxdepth 6 \( ! -regex '.*/\..*' \) -type f -print0 | xargs -0r ls -lt 
+computer$ find . -maxdepth 6 \( ! -regex '.*/\..*' \) -type f -print0 | xargs -0r ls -lt
+ 
 }}}
 
 
 Change file extensions (html to php but you get the gist):
 {{{code: lang="sh" linenumbers="False"
 computer$ for x in *.html; do mv "$x" "${x%.html}.php"; done
+
 }}}
 
 

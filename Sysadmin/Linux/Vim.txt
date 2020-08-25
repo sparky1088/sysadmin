@@ -7,6 +7,7 @@ Creation-Date: 2020-07-31T10:01:23-07:00
 If you forget to sudo a file in vim you can always run:
 {{{code: lang="sh" linenumbers="True"
 :w ! sudo tee %
+
 }}}
 
 
@@ -15,6 +16,7 @@ This is fixable with
 {{{code: lang="sh" linenumbers="True"
 :set paste
 i
+
 }}}
 
 

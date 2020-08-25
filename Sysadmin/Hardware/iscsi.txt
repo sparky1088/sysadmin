@@ -8,23 +8,40 @@ restart iscsi service
 {{{code: lang="sh" linenumbers="False"
 computer# systemctl status iscsid
 computer# systemctl restart iscsid
+
 }}}
 
 
 List node record:
 {{{code: lang="sh" linenumbers="False"
 computer# iscsiadm --mode node
+
 }}}
 
 
 take the result of that for the name and list all give node record
 {{{code: lang="sh" linenumbers="False"
 computer# iscsiadm --mode node --targetname iqn.name.of.iscsi --portal ip.of.isc.si
+
 }}}
 
 an example:
 {{{code: lang="sh" linenumbers="False"
 computer# iscsiadm --mode node --targetname iqn.2001-05.com.doe:test --portal 192.168.1.1:3260
+
 }}}
 
 https://www.thegeekdiary.com/iscsi-connection-command-examples-cheat-sheet/
+
+View the session details for the iscsi device
+{{{code: lang="sh" linenumbers="False"
+computer# iscsiadm -m session -P 3
+
+}}}
+
+This will let you see what device the iscsi has become and if it is blank you will need to logout and backin to the iscsi device
+{{{code: lang="sh" linenumbers="False"
+computer# iscsiadm -m node --logout
+computer# sudo iscsiadm --mode node --targetname iqn.2001-05.com.doe:test --portal ip.of.isc.si --login
+
+}}}

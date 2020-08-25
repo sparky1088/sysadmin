@@ -10,6 +10,7 @@ Sometimes it is hardware that is going bad.
 smartmontools or smartctl allows us to check harddrives. 
 {{{code: lang="sh" linenumbers="False"
 computer# smartctl -a /dev/sda
+
 }}}
 
 
@@ -18,6 +19,7 @@ https://www.cyberciti.biz/tips/linux-find-out-if-harddisk-failing.html
 If a device is in a raid or sas it is a little different
 {{{code: lang="sh" linenumbers="False"
 computer# smartctl -d scsi --all /dev/sgX
+
 }}}
 
 

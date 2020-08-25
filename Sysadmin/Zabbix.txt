@@ -16,17 +16,20 @@ If you have an interface set up on the machine itself rather than using NAT make
 eg:
 {{{code: lang="sh" linenumbers="False"
 computer# zabbix_get -s agent.machine.address -I server.ip.address -k "system.cpu.load[,avg1]"
+
 }}}
 
 otherwise if you are using NAT make sure the agent file has the internal ip or dns name for the server or the commands wont work.
 {{{code: lang="sh" linenumbers="False"
 Server=zabbix.internal,192.168.1.15
 ServerActive=zabbix.internal,192.168.1.15
+
 }}}
 
 The command for an internal is almost the same
 {{{code: lang="sh" linenumbers="False"
 computer# zabbix_get -s agent.machine.address -k "system.cpu.load[,avg1]"
+
 }}}
 
 
