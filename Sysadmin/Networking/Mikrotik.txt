@@ -13,6 +13,9 @@ This is done under IP > Addresses
 
 *Firewall for NAT make sure you set things to //accept FORWARD// and not //accept INPUT// or something else.
 
+==== Ports ====
+When doing NAT make sure to only do specific ports and not an entire server unless you already have a firewall in place like iptables on said server that is only allow connections via specific ports.
+
 ===== Hairpin NAT =====
 hairpin nat on a mikrotik so things resolve correctly internally
 
