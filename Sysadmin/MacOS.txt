@@ -16,3 +16,10 @@ For some reason when [[MacOS]] gets updated it will sometimes cause a VPN to sto
 ===== Display Link =====
 I don't do much on mac but one of the things I have had to do a number of times is install display link drivers.
 https://www.displaylink.com/downloads/macos
+
+===== Route =====
+The route command works different on macs
+{{{code: lang="sh" linenumbers="False"
+Comptuer# netstat -nr
+}}}
+
