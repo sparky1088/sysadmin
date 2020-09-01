@@ -11,17 +11,40 @@ Winbox works on mac, linux (must use wine) and windows but it is an amazing tool
 In order to NAT any address you have to give Mikrotik the address. 
 This is done under IP > Addresses
 
-*Firewall for NAT make sure you set things to //accept FORWARD// and not //accept INPUT// or something else.
+*Firewall for NAT make sure you set things to //accept FORWARD// and not //accept INPUT// or something else. 
+This rule was needed for Nat to work.
+{{{code: lang="sh" linenumbers="False"
+/ip firewall filter
+add action=accept chain=forward comment="test nat" connection-nat-state=dstnat
+
+}}}
+
 
 ==== Ports ====
 When doing NAT make sure to only do specific ports and not an entire server unless you already have a firewall in place like iptables on said server that is only allow connections via specific ports.
 
 ===== Hairpin NAT =====
-hairpin nat on a mikrotik so things resolve correctly internally
-
+Hairpin nat on a mikrotik so things resolve correctly internally
 https://wiki.mikrotik.com/wiki/Hairpin_NAT
+Make sure these NAT rules are higher Priority than the others.
+{{{code: lang="sh" linenumbers="False"
+/ip fireall nat
+add action=masquerade chain=srcnat comment="Device Hairpin Nat" dst-address=Int.ip.ad.dr out-interface=core src-address=Int.net.ad.dr/16
 
-
+}}}
 
 A quick config guide:
 https://www.ukhost4u.com/mikrotik-router-gui/
+
+===== BlockList =====
+Creating a Deny List/Block List - This has been useful for Banning IPs that are trying to spam the network.
+{{{code: lang="sh" linenumbers="False"
+/ip firewall filter add chain=input src-address-list=blocklist action=drop
+/ip firewall filter add chain=output dst-address-list=blacklist action=drop
+/ip firewall address-list
+add list=blacklist address=1.1.1.1
+add list=blacklist address=2.2.2.2
+
+}}}
+/
+https://forum.mikrotik.com/viewtopic.php?t=31994

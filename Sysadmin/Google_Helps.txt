@@ -4,18 +4,100 @@ Creation-Date: 2020-08-03T08:11:52-07:00
 
 ====== Google Helps ======
 
-===== GAM =====
-GAM is a great tool for gsuite administration. There are a few different versions. There are a few different versions available. The most advanced version is the one listed below which adds lots of additional commands.
+===== Address Bar =====
+I hate how urls are shortened now to exclude www or https:// and I would much rather see this.
 
-https://github.com/taers232c/GAMADV-XTD3/wiki
+This no longer works:
+In chrome://flags there are a couple of settings that will make this visible:
+Omnibox UI Reveal Steady-State URL Path, Query, and Ref On Hover - Enabled
+Omnibox UI Hide Steady-State URL Path, Query, and Ref On Interaction - Disalbed
 
-One of the things this version was needed for was empting trash from a team drive
+you can still disable these options on the Chrome shortcut / command line by adding the --disable-features argument. For example:
+
 {{{code: lang="sh" linenumbers="False"
-~/bin/gamadv-xtd3/gam user admin.username empty drivetrash DRIVE_ID
+.../chrome.exe --disable-features=OmniboxUIExperimentHideSteadyStateUrlTrivialSubdomains,OmniboxUIExperimentHideSteadyStateUrlScheme,OmniboxUIExperimentHideFileUrlScheme
 
 }}}
+
+
+For Linux you would have to change it's launch options. I just switched to firefox because I was sick of Chrome dictating how I view sites. I might have had to change a setting to get this to work but the setting I previously had to change seems to be reverted in the latest firefox (version 80).
+
+===== Drive File Stream =====
+This will allow a windows or a mac computer to connect to a google drive. It is very userful however it is not available on Linux.
+https://support.google.com/a/answer/7491144?hl=en
+
+I use google-drive-ocamlfuse in order to connect drive to linux when it is needed (usually I just drag and drop files but for larger items and many items it is easier to use this). 
+https://github.com/astrada/google-drive-ocamlfuse
 
 
 ===== Drive Space =====
 To see what is taking up the most space on google drive look at the quota page. It will list the largest files.
 https://drive.google.com/drive/u/0/quota
+
+
+===== Query Sheets =====
+There are lots of things you can do with querying sheets. This is extremely helpful for all sorts of things. I have saved a few of the ones that I used the most often.
+
+Here is a sheet that uses A LOT (not all) of the knowledge that I have for google sheets:
+https://docs.google.com/spreadsheets/d/1nn3G4nJcrWFvsP4a1e35s-7JmY6cxYzai_PsLjWUqi8/edit?usp=sharing
+Note: This is based on the sheet by Tintagel with changes I have implemented.
+
+==== From another Sheet ====
+This will allow you to search another sheet or columns. Most of the time you will need to make a named range as it is much easier to search from that but if you name an entire sheet as the range then it is essentially like a database table.
+
+Below is a query for an Okta failed login report. It pulls the IP, the Country and the City of any failed login that is not in the United States or the United Kingdom (as we have offices there) and excluding our office static IP just in case.
+{{{code: lang="sh" linenumbers="False"
+=SORT(UNIQUE(QUERY('SheetName'!2:1000,"SELECT T, Y, Z WHERE T !='IPofOffice' AND Y !='United States' AND Y !='United Kingdom' AND Y IS NOT NULL")),1,TRUE)
+
+}}}
+
+
+This one searches the Named Range 'SERVERS' for the IP that is next to it (useful for seeing what is on the IP and seeing if the IP is in use).
+{{{code: lang="sh" linenumbers="False"
+=IFERROR(VLOOKUP(A9,SERVERS,2,False), "Not In SERVERS List")
+}}}
+
+
+The table looks like this:
+| IP          | Server            | Hostname   |
+|:------------|:------------------|:-----------|
+| 1.1.1.1     | onedotDns.domain  | onedotDns  |
+| 8.8.8.8     | googleDns1.domain | googleDns1 |
+| 192.168.0.1 | routerName.domain | RouterName |
+		
+This is less useful if you have other softwares etc doing this kind of thing for you.
+
+==== From HTML ====
+If you create an HTML <Iframe> you can import data. The sheet will need to be viewable and there is some weird cross ssite stuff. In chrome it seems to work alright.
+{{{code: lang="html" linenumbers="False"
+<iframe src="https://spreadsheets.google.com/tq?tqx=out:html&tq=SELECT A, B WHERE D >0 ORDER BY A&key=SomeReallyLongStringKey&gid=0" width=250 height=800 frameborder="0" scrolling="no" onload="resizeIframe(this)">
+</iframe>
+
+}}}
+
+
+I would also note that I generally add these scripts as well for some resizing/refreshing issues
+{{{code: lang="html" linenumbers="False"
+<script>
+	 var time = new Date().getTime();
+	 $(document.body).bind("mousemove keypress", function(e) {
+		 time = new Date().getTime();
+	 });
+
+	 function refresh() {
+		 if(new Date().getTime() - time >= 60000) 
+			 window.location.reload(true);
+		 else 
+			 setTimeout(refresh, 10000);
+	 }
+
+	 setTimeout(refresh, 30);
+</script>
+<script>
+  function resizeIframe(obj) {
+	obj.style.height = obj.contentWindow.document.body.scrollHeight + 'px';
+  }
+</script>
+
+}}}
+

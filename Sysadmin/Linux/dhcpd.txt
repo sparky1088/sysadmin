@@ -1,0 +1,16 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2020-09-01T12:31:15-07:00
+
+====== dhcpd ======
+
+dhcpd is a DHCP daemon that will send out dhcp leases to computers on a network.The config file is located in ///etc/dhcp/dhcpd.conf//. 
+
+This will allow you to search the lease list:
+{{{code: lang="sh" linenumbers="False"
+Server$ dhcp-lease-list --parsable | grep "name or IP"
+
+}}}
+
+
+You can also simply check the file ///var/lib/dhcpd/dhcpd.leases// for the same information.

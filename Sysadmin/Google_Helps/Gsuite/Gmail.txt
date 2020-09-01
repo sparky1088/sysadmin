@@ -1,0 +1,69 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2020-09-01T10:31:46-07:00
+
+====== Gmail ======
+Created Tuesday 01 September 2020
+
+===== Search Email =====
+There are many parameters that google allows you to use to help narrow down search results. The ones I use the most are //in:Inbox //and //from:email@domain// or between two dates using  //before:YYYY-MM-DD and after:YYYY-MM-DD// as there isn't a between function. The full list is in the support article below.
+https://support.google.com/mail/answer/7190?hl=en
+
+Using the size operations made it easier to clean up space on gmail.
+
+===== Email Blocking =====
+Blocker an email address from your gmail/gsuite is straight forward except if the address is emailing a group.
+
+To block the address on an individual account simply click the 3 dots on the email in gmail and select block address.
+
+==== To block for all users: ====
+1. You need to add the address to the blocked senders list.
+	* Sign in to your Google Admin console.
+	* Sign in using an administrator account, not your current account
+  2. From the Admin console Home page, go to Appsand thenG Suiteand thenGmailand thenAdvanced settings.
+	* Tip: To see Advanced settings, scroll to the bottom of the Gmail page.
+3. To apply the setting to everyone, leave the top organizational unit selected. Otherwise, select a child organizational unit.
+4. Point to Blocked senders and choose an option:
+	* To edit an existing setting, click Edit.
+	* For a new setting, click Configure or Add anotherand thenenter a unique description.
+5. Click Use existing or create a new one.
+6. Choose an option:
+	* To create a list, under Create new list, enter a name for the listand thenclick Create.
+	* To use an existing list as your blocked sender list, under Available lists, click the list name.
+7. Point to the list name, click Editand thenAdd "".
+8. Enter one or more email addresses or domain names. Separate each entry with a comma or space.
+9. Click Save.
+10. (Optional) To add more email addresses or domains to the list, repeat the above steps.
+
+https://support.google.com/a/answer/2364632?hl=en
+
+==== Group Blocking ====
+In the case of a group i had to have a compliance content rule.
+I noticed the the regex test that google had did not match the regex test I used but I ended up removing the ^ and $ for the beginning and end of line and it worked.
+
+Create a receiving rule for the organizational unit that shouldn’t receive email from some other organizational unit.
+
+1. From the Admin console Home page, go to Appsand thenG Suiteand thenGmailand thenCompliance.
+	* Note: You might find this setting at Appsand thenG Suiteand thenGmailand thenAdvanced Settings.
+2. On the left, select the organizational unit that you want to apply the receiving rule to, such as Elementary School Students.
+3. Scroll to the Compliance section, point to the Content compliance setting, and choose an option:
+	* Click Configure.
+	* If the setting is already configured, click Edit or Add another.
+4. Add or update a description for the rule, such as Prevent elementary school students from receiving email from messages with high-school and middle-school headers.
+5. Under Email messages to affect, check Internal - receiving.
+6. Under Add expressions that describe the content you want to search for in each message, click Add.
+7. Under Expressions, select Advanced content match in the drop-down list.
+8. Under Location, select Full headers.
+9. Under Match type, select Matches regex.
+10. Under Regexp, enter: 
+	^X-user-type: (high-school|middle-school)$
+	* In our case I used X-Original-Sender: email@provider.com
+11. Under Regex Description, enter Reject message if it is marked with high-school or middle-school.
+12. Click Save.
+13. Under If the above expressions match, do the following, select Reject message from the drop-down menu.
+14. Under Customize rejection notice, enter a description for the sender to receive so that they understand why the message was returned to sender.
+	* For example, This message has been rejected because your organization is not allowed to send email to the Elementary School Students organization.
+15. Click Add setting.
+16. Click Save.
+
+https://support.google.com/a/answer/9175444?hl=en

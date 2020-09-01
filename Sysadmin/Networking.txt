@@ -213,6 +213,12 @@ $ xsltproc scan.xml -o scan.html
 
 --------------------
 
+===== Useful Tool for creating ACL's and BanLists =====
+This site allows you to create ACL's and Banlists based on country which can be very useful. Warning, this creates MASSIVE lists as you are blocking entire countries.
+https://www.countryipblocks.net/acl.php
+
+--------------------
+
 ==== Useful Ping Notes: ====
 Pretty ping is a useful package
 

@@ -1,0 +1,32 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2020-09-01T10:31:55-07:00
+
+====== Gsuite ======
+
+===== Super Admins =====
+Super admins bypass SSO when they login to gsuite and only require the username and password (unless multifactor is set up for the account).
+
+https://support.google.com/a/answer/6341409?hl=en
+
+===== GAM =====
+GAM is a great tool for gsuite administration. There are a few different versions. There are a few different versions available. The most advanced version is the one listed below which adds lots of additional commands.
+
+https://github.com/taers232c/GAMADV-XTD3/wiki
+
+One of the things this version was needed for was empting trash from a team drive
+{{{code: lang="sh" linenumbers="False"
+~/bin/gamadv-xtd3/gam user admin.username empty drivetrash DRIVE_ID
+
+}}}
+
+
+===== Transfer Ownership Accross Domains =====
+As of writing this it is not possible. The only reason I've had to do this is leaving a company and a google doc is something that I either put in the wrong drive. The only way I found to do it is to simply make a copy of the file. It's a rare enough thing that I usually don't have to worry about it or I can copy and paste.
+
+===== Send from Printer/Scanner =====
+In order to send from a printer, the printer will need its own email address (technically you can use yours but this is less secure). I followed the google documentation. Keep in mind that this is not the best/most secure way to scan and send something.
+
+Its mostly the smtp settings that need to be correct.
+
+https://support.google.com/a/answer/176600?hl=en
