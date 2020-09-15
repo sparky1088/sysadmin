@@ -1,0 +1,32 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2020-09-04T08:13:00-07:00
+
+====== AWS VPC VPN ======
+
+You can download the VPN instructions but it does not include a couple of items that are needed and some trouble shooting tips.
+
+1. You have to create a **IPSec Peer** before you can create a **IPSec Policy** for it now, I am guessing this is a versioning thing where older versions it did not matter.
+2. The //SA Src.// and //SA Dst. Addresses //Are based on the peer (this is why it needs to be created first)
+3. When Added you local subnet and VPC Subnet **IPSec** **Policy **you need to make sure to select Tunnel (this is not stated in the instructions for the local subnets only for the NAT'd Addresses).
+4. If using **BGP **//instead// of **Static Routes**
+	a. Only leave 1 instance running (not both) as it will treat both as active but you cannot have both VPNs active (aws sets up 2 simultaneous vpns but Mikrotik doesnt support Active/Active or Active/Standby for VPNs). Sometimes traffic will try to route through the inactive VPN
+	b. The AS number for the BGP Instance can be acquired from AWS under **Customer Gateway **in** VPC Settings** This defaults to 65000 (priave range is ASNs 64,512 to 65,534 ).
+	c. The Router ID is the external address added on the 169.254.X.X subnet (This should be obvious but I wanted to document it in case I forget in the future.
+	d. **BPG** needs //Redistribute Connected//, //Redistribute Static//, and to make sure you uncheck //Client to Client Reflection// in the **Instance** setting, This was in the default instance, but I don't know if it is a default setting or not because we had to add one with the right AS number.
+5. In the **VPC > VPN > Site-Site VPN Connections **and then under the tab **Tunnel Details** you can see the status of the VPN.
+	a. If the Details says //IPSEC IS UP //but the status is //DOWN// then BGP is not working and has an incorrect config.
+	b. If the status is //UP// but things are not working you most likely need a route on the VPC to the local subnet.
+
+Static Routes Might be easier to make, its been a while Since I've had to set that up in a VPN manually though and it was not on a Mikrotik but a Cisco in the past.
+
+I'll include an anonymized config after I go through it.
+
+Some Helpful Links
+Diagram: https://docs.aws.amazon.com/vpn/latest/s2svpn/VPNTunnels.html
+User Guide PDF: https://docs.aws.amazon.com/vpn/latest/s2svpn/s2s-vpn-user-guide.pdf
+Testing GUide: https://docs.aws.amazon.com/vpn/latest/s2svpn/HowToTestEndToEnd_Linux.html
+ - this was mostly helpful to determine if IPSec was working, but BGP not working.
+Old instructions Step by Step: https://forum.mikrotik.com/viewtopic.php?t=87844
+Where I found you need Tunnel on both Peer Policies: https://forum.mikrotik.com/viewtopic.php?f=2&t=87844&p=779780&hilit=aws+vpn#p779780
+

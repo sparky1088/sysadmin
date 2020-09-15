@@ -1,0 +1,15 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2020-09-11T09:39:17-07:00
+
+====== Powershell ======
+
+If a powershell script is not signed you can run the following
+
+{{{code: lang="powershell" linenumbers="False"
+> set-ececutionpolicy unrestricted -scope process
+
+}}}
+
+
+There are other scopes but I find that one is the one to only allow it for a 1 time use.

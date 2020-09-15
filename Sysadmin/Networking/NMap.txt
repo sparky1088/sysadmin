@@ -1,0 +1,102 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2020-09-02T09:51:32-07:00
+
+====== NMap ======
+
+
+
+===== Nmap =====
+scan subnet and output file to xml with a quick scan
+{{{code: lang="sh" linenumbers="False"
+computer# nmap 192.168.1.0/24 -oX scan.xml
+
+}}}
+
+//-p-// in order to scann all ports
+-A detect OS and services
+-sV standard service detextion
+
+There are also scripts using the nmap scripting engine that do various things. The install location (at least on ubuntu) is:
+///usr/share/nmap/scripts///
+
+Scan for CVE detection 
+{{{code: lang="sh" linenumbers="False"
+computer# nmap -Pn --script vuln 192.168.1.10
+
+}}}
+
+
+https://hackertarget.com/nmap-cheatsheet-a-quick-reference-guide/
+Common commands
+https://securitytrails.com/blog/top-15-nmap-commands-to-scan-remote-hosts
+
+Zenmap list of commands:
+Intense Scan
+{{{code: lang="sh" linenumbers="False"
+computer# nmap -T4 -A -v
+
+}}}
+
+Intense scan plus UDP
+{{{code: lang="sh" linenumbers="False"
+computer# nmap -sS -sU -T4 -A -v
+
+}}}
+
+Intense scan, all TCP ports
+{{{code: lang="sh" linenumbers="False"
+computer# nmap -p 1-65535 -T4 -A -v 
+
+}}}
+
+Intense scan, no ping
+{{{code: lang="sh" linenumbers="False"
+computer# nmap -T4 -A -v -Pn
+
+}}}
+
+Ping Scan
+{{{code: lang="sh" linenumbers="False"
+computer# nmap -sn
+
+}}}
+
+Quick Scan
+{{{code: lang="sh" linenumbers="False"
+computer# nmap -T4 -F
+
+}}}
+
+Quick Scan Plus
+{{{code: lang="sh" linenumbers="False"
+computer# nmap -sV -T4 -O -F -version-light
+
+}}}
+
+Quick Traceroute
+{{{code: lang="sh" linenumbers="False"
+computer# nmap -sn -traceroute
+
+}}}
+
+Regular Scan
+{{{code: lang="sh" linenumbers="False"
+computer# nmap
+
+}}}
+
+Slow Comprehenseive Scan
+{{{code: lang="sh" linenumbers="False"
+computer# nmap -sS -sU -T4 -A -v -PE -PP -PS80,443 -PA3389 -PU40125 -PY -g 53 –script “default or (discovery and safe)”
+ 
+}}}
+
+https://www.securesolutions.no/zenmap-preset-scans/
+
+Recently I coldn't get the xml to load in a webpage so I neded up using xlstproc (I had to install the package)
+{{{code: lang="sh" linenumbers="False"
+$ xsltproc scan.xml -o scan.html
+
+}}}
+

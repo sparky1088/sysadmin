@@ -1,0 +1,36 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2020-09-08T15:38:36-07:00
+
+====== Bind ======
+
+2 big things as notes for bind, if you are doing a cname make sure to include the . at the end. 
+eg:
+{{{code: lang="sh" linenumbers="False"
+ntp     IN     CNAME     server.com.
+
+}}}
+
+
+If you are syncing bind to another server make sure you change your serial (this is the first option in the SOA. 
+I believe ithe other options default to seconds so you do not have to include a unit.
+eg:
+We added the following SOA record to the db.movie.edu file:
+
+{{{code: lang="sh" linenumbers="False"
+movie.edu. IN SOA toystory.movie.edu. al.movie.edu. (
+						  1        ; Serial
+						  3h       ; Refresh after 3 hours
+						  1h       ; Retry after 1 hour
+						  1w       ; Expire after 1 week
+						  1h )     ; Negative caching TTL of 1 hour
+						  
+}}}
+
+
+I personally prefer to just increase the serial by 1 but I have seen where the serial is actually the date in the format of yyyymmdd
+For example
+19980706 being July 7, 1998 and then lets you change it on March 3, 2000 you would change it to 20000303.
+The benefit to this is you can see when it was last edited, however if you have to make 2 edits in a single day or fix an edit you still have to increase and you can see when a file was last edited on linux using the stat or ls -l commands. If there is another benefit I do not know it.
+
+From: https://www.oreilly.com/library/view/dns-and-bind/0596100574/ch04.html
