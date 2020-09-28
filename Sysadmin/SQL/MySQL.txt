@@ -66,7 +66,11 @@ computer$ mysql -h yourhostname -u username -p databasename < yoursqlfile.sql
 
 ===== Tables, Columns, and Data types from MySQL =====
 {{{code: lang="sql" linenumbers="True"
-mysql> select distinct table_name, column_name, data_type from information_schema.columns where information_schema.columns.data_type <> 'datetime' and information_schema.columns.data_type <> 'timestamp' and table_name not in (select table_name from information_schema.columns where data_type = 'datetime') and table_name not in (select table_name from information_schema.columns where data_type = 'timestamp');
+mysql> select distinct table_name, column_name, data_type 
+from information_schema.columns 
+where information_schema.columns.data_type <> 'datetime' 
+  and information_schema.columns.data_type <> 'timestamp' 
+  and table_name not in (select table_name from information_schema.columns where data_type = 'datetime') and table_name not in (select table_name from information_schema.columns where data_type = 'timestamp');
 
 }}}
 
@@ -79,21 +83,52 @@ mysql> SET GLOBAL max_allowed_packet=10073741824;
 }}}
 
 
-===== Size of DB in GB =====
+===== Size of DB =====
+In Gigabytes
 {{{code: lang="sql" linenumbers="True"
-mysql> SELECT table_schema "DB Name", Round(Sum(data_length + index_length) / 1024 / 1024/1024, 1) "DB Size in GB" FROM information_schema.tables GROUP BY table_schema;
+mysql> SELECT table_schema "DB Name", Round(Sum(data_length + index_length) / 1024 / 1024/1024, 1) "DB Size in GB" 
+FROM information_schema.tables 
+GROUP BY table_schema;
  
 }}}
 
 This query comes from the mysql forums, where there are more comprehensive instructions available
-
-===== Size of DB =====
+In Megabytes
 {{{code: lang="sql" linenumbers="True"
-mysql> SELECT table_schema "DB Name", Round(Sum(data_length + index_length) / 1024 / 1024, 1) "DB Size in MB" FROM information_schema.tables GROUP BY table_schema;
+mysql> SELECT table_schema "DB Name", Round(Sum(data_length + index_length) / 1024 / 1024, 1) "DB Size in MB" 
+FROM information_schema.tables 
+GROUP BY table_schema;
 
 }}}
 
 This query comes from the mysql forums, where there are more comprehensive instructions available
+
+===== Size of Tables =====
+{{{code: lang="sql" linenumbers="True"
+mysql> SELECT
+  TABLE_NAME AS `Table`,
+  ROUND((DATA_LENGTH + INDEX_LENGTH) / 1024 / 1024) AS `Size (MB)`
+FROM
+  information_schema.TABLES
+WHERE
+  TABLE_SCHEMA = "us-new"
+ORDER BY
+  (DATA_LENGTH + INDEX_LENGTH)
+DESC;
+
+}}}
+
+This query shows the size of tables
+{{{code: lang="sql" linenumbers="True"
+mysql> Mysql Table row count
+ SELECT TABLE_NAME,SUM(TABLE_ROWS) 
+ FROM INFORMATION_SCHEMA.TABLES 
+ WHERE TABLE_SCHEMA = 'us-new' 
+ GROUP BY TABLE_NAME;
+
+}}}
+
+This query shows the number of rows in a table
 
 ===== Create MySQL User and Password =====
 {{{code: lang="sql" linenumbers="True"
@@ -121,4 +156,6 @@ mysql> GRANT SELECT, UPDATE, INSERT, DELETE ON database_name.table_name TO USER1
 mysql> GRANT FILE ON *.* to USER1@'localhost';
 
 }}}
+
+
 
