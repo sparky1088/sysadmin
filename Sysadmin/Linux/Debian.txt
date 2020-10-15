@@ -1,0 +1,23 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2020-10-05T11:25:35-07:00
+
+====== Debian ======
+
+===== Install a package from backports =====
+
+All backports are deactivated by default (i.e. the packages are pinned to 100 by using ButAutomaticUpgrades: yes in the Release files. If you want to install something from backports run:
+
+{{{code: lang="sh" linenumbers="False"
+computer# apt-get -t buster-backports install "package"
+
+}}}
+
+
+of course you can use aptitude as well:
+
+{{{code: lang="sh" linenumbers="False"
+computer# aptitude -t buster-backports install "package"
+
+}}}
+

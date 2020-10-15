@@ -94,7 +94,8 @@ computer# nmap -sS -sU -T4 -A -v -PE -PP -PS80,443 -PA3389 -PU40125 -PY -g 53 â€
 
 https://www.securesolutions.no/zenmap-preset-scans/
 
-Recently I coldn't get the xml to load in a webpage so I neded up using xlstproc (I had to install the package)
+Recently I coldn't get the xml to load in a webpage so I neded up using xlstproc (I had to install the package) This is on there website: 
+Run the XML file through an XSLT processor such as xsltproc to produce an HTML file.
 {{{code: lang="sh" linenumbers="False"
 $ xsltproc scan.xml -o scan.html
 
