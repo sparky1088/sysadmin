@@ -1,0 +1,18 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2020-10-30T13:57:28-07:00
+
+====== NVMe ======
+ 
+Recently had a server that used nvme drives (2 actually) some things to note
+
+1) server A had additional ssd's this works well when using debian, however speeds for io using zfs were problably 10 times slower than ssd's
+
+Speeds were tested using fio. I'll get the exact tests and put them in here.
+
+2) server B did not have the additional drives and I could not get debian to install no matter what i did (including using  a flashdrive as a boot disk) the problem it was having was it was unable to install grub dummy. I tried everything I could think of but could not manage to get it to boot until I put CentOS on it rather than Debian.
+
+I tried various configurations including using legacy bios (which did successfully install but would not boot).
+
+Server A was SuperMicro
+Server B was a Dell
