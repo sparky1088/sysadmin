@@ -1,0 +1,17 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2020-11-25T09:52:27-08:00
+
+====== GitLab ======
+Created Wednesday 25 November 2020
+
+This was installed from Source:
+
+===== Puma web server =====
+I mostly made this section for the transition to Puma from Unicorn. In the end I had to figure out the correct puma config file (///home/git/gitlab/config/puma.rb//) and change some settings in a file the init called (///etc/init.d/gitlab//). The settings I copied from the example. it looked like there was a //puma.rb// file already so I tried using/modifing that but in the ned i decided it was different enough from the example to use the example as Unicorn was used for the past 2 years. They are located in ///etc/default/gitlab//. And specifically it is the web_server_pid_path variable that needed to change.
+
+
+===== PostgreSQL =====
+The update to this is probably going to be a little more involved as im not sure where the files are located and the gitlab instructions say "follow postgresql instructions" which means using both. I've done this before when updating it on a different server so Il'll have to see what I can find/remember from doing it there.
+
+From what I remember I need to set things auto start on both instances and change a port in order to get it working right and then migrate the database and then change it back to manual on the version we dont want to run and then change the port back.

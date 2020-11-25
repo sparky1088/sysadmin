@@ -2,7 +2,7 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.4
 Creation-Date: 2020-09-01T10:31:55-07:00
 
-====== Gsuite ======
+====== Gsuite/Google Workspace ======
 
 ===== Super Admins =====
 Super admins bypass SSO when they login to gsuite and only require the username and password (unless multifactor is set up for the account).
