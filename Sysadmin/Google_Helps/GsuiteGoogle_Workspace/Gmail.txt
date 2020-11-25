@@ -67,3 +67,17 @@ Create a receiving rule for the organizational unit that shouldn’t receive ema
 16. Click Save.
 
 https://support.google.com/a/answer/9175444?hl=en
+
+===== Admin Search =====
+
+This is what I had to do to search for an email from another organization that was not showing up.
+
+1- Access to your admin console > Reports > Audit > Email log search
+2- There you will have a panel to make a search. Please enter the email address of the sender in the field "From:"
+3- Click on "Search"
+4- This tool will provide you with a results of all incoming emails from that email address
+
+* This tool, "Email log search", is a way for us to be able to look inside our mail servers. With it we are able to see all the email flow, incoming and outgoing emails, if a message was affected by a forwarding rule, if a message was rejected by our mail servers.
+
+If a message is sent to our mail servers, it will leave a record that is visible through this tool, if we do not find a record of said message this means that the message was never sent correctly to our servers, so we conclude that something happened at the origin of the message, in other words, a problem on the sender's side.
+
