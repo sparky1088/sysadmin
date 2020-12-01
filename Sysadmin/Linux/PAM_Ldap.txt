@@ -4,11 +4,12 @@ Creation-Date: 2020-08-03T08:44:23-07:00
 
 ====== PAM Ldap ======
 
-Usually what I do is install //ldap-utils ldapscripts libldap-2.4 libldap-common libnss-ldap //and// libpam-ldap.//
+Usually what I do is install //ldap-utils ldapscripts libldap-2.4 libldap-common libnss-ldap libpam-ldap //and// nslcd.//
 I also copy the configs from other servers for the files: 
 ///etc/pam_ldap.conf //
 ///etc/nsswitch.conf//
 ///etc/ldap/ldap.conf//
+///etc/libnss-ldap.conf//
 
 I then restart nscd.
 
@@ -19,7 +20,7 @@ The comment we are intersted in is here
 {{{code: lang="sh" linenumbers="False"
 I found the problem. One of the guides I found on Google instructed me to do
 
-apt-get libnss-ldap libpam-ldap nslcd
+apt-get install libnss-ldap libpam-ldap nslcd
 
 I also later found an article that said that libpam-ldapd is newer than libpam-ldap and installed that instead.
 

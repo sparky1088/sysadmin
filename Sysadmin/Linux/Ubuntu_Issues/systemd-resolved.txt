@@ -1,0 +1,16 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2020-11-30T09:33:57-08:00
+
+====== systemd-resolved ======
+Created Monday 30 November 2020
+
+Inoticed my DNS is being set to 127.0.0.53 meaning it is a local host. After searching aroud I found https://askubuntu.com/questions/973017/wrong-nameserver-set-by-resolvconf-and-networkmanager
+
+I am still showing it using myself as the dns server when using things. Its possible that the service is using myself as the dns. Ill do some research on this.
+
+It looks like it does work this way, applications will use the local host dns that comes from the dns of systemd-resolved.
+
+https://wiki.archlinux.org/index.php/Systemd-resolved
+
+This means some weird things with dig.
