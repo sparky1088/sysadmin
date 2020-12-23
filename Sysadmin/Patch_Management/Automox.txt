@@ -1,0 +1,30 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2020-12-15T08:45:47-08:00
+
+====== Automox ======
+Created Tuesday 15 December 2020
+
+Automox Best Practices:
+https://support.automox.com/en/articles/2921449-what-are-the-recommended-best-practices-for-patching-in-automox
+
+Mac notifications:
+https://support.automox.com/en/articles/3397843-allowing-automox-notifications-in-macos-catalina
+
+Bulk Deploy
+https://docs.automox.com/home/agent-installation/deploying-the-automox-agent-in-bulk
+
+Installing on Linux
+{{{code: lang="sh" linenumbers="False"
+curl -sS "https://console.automox.com/downloadInstaller?accesskey=YourAccessKeyHere" | sudo bash
+sudo service amagent start
+
+}}}
+
+
+Removing the Agent
+https://docs.automox.com/home/agent-installation/removing-the-automox-agent
+
+
+===== Worklets =====
+Worklets are how things are accomplished in Automox. It runs by using powershell/bash commands.

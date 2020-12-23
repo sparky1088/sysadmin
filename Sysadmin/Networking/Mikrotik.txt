@@ -48,3 +48,26 @@ add list=blacklist address=2.2.2.2
 }}}
 /
 https://forum.mikrotik.com/viewtopic.php?t=31994
+
+
+===== Internet Speeds Limits =====
+For some reason we were being rate limited. After much troubleshooting we found it turned out that this was set up in the router. The previous IT guys set up the limits based on the previous speeds we were getting.
+
+use the following to mark the packets
+
+{{{code: lang="sh" linenumbers="False"
+/ip firewall mangle 
+
+}}}
+
+
+you need to mark packets in order to rate limit them. Once the packets are marked use 
+
+{{{code: lang="sh" linenumbers="False"
+/queue tree
+
+}}}
+
+
+--- need to add specific details probably.
+

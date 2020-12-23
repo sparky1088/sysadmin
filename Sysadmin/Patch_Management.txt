@@ -1,0 +1,10 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2020-12-15T08:45:38-08:00
+
+====== Patch Management ======
+
+There are lots of Patch Management tools Automox is what is being used
+Windows has one as well.
+
+WSUS is another one for Windows Server Update Services
