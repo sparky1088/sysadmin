@@ -52,3 +52,21 @@ https://unix.stackexchange.com/questions/341614/understanding-the-error-reportin
 
 I have also seen this when an iscsi device was not correctly showing as a device and had to login to it again. See [[../../Hardware/iscsi.txt|iscsi]]
 
+===== zfs-utils unistalled problem =====
+zfs-linux-utils got unistalled. I reinstalled it but the pool didnt exist. However i was able to find it with, 
+ 
+{{{code: lang="sh" linenumbers="False"
+sudo zpool import -d /dev
+
+}}}
+
+This comand lists all pools that can be found as well as their number which can be used to import it under a different name.
+
+and it showed up and I was able to import it
+
+{{{code: lang="sh" linenumbers="False"
+sudo zpool import pool_name
+
+}}}
+
+
