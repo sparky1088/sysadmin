@@ -15,3 +15,8 @@ I mostly made this section for the transition to Puma from Unicorn. In the end I
 The update to this is probably going to be a little more involved as im not sure where the files are located and the gitlab instructions say "follow postgresql instructions" which means using both. I've done this before when updating it on a different server so Il'll have to see what I can find/remember from doing it there.
 
 From what I remember I need to set things auto start on both instances and change a port in order to get it working right and then migrate the database and then change it back to manual on the version we dont want to run and then change the port back.
+
+Postgresql database loction and user config can be found in the config folder for gitlab (in a self hosted it is in ///home/git/gitlab/config//). There are a few database files there (eg database.pgsql or database.yml or database.yml.postresql). I'm not sure what the actual one it is using is
+
+The config for postgresql (///etc/postgresql/version#/main/postgresql.conf//) lead me to ///var/lib/postgresql/version#/main/// as the location for the database. 
+

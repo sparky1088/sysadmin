@@ -30,3 +30,14 @@ I really don't know why you'd install both of those ldap modules. After getting 
 
 }}}
 
+
+
+===== NSCD =====
+nscd uses a chaching system. Most of the time this isnt a problem as i can update one day and later it comes back fine. Sometimes users need immadiate changes to be sync'd (most often the change is adding a group to a user)
+
+{{{code: lang="sh" linenumbers="False"
+sudo nscd --invalidate=groups
+
+}}}
+
+

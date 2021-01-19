@@ -1,0 +1,43 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2021-01-19T10:07:50-08:00
+
+====== PostgreSQL ======
+Created Tuesday 19 January 2021
+
+Prompt for password to connect to a gitlab instance
+{{{code: lang="sh" linenumbers="False"
+psql database -U user -W
+
+}}}
+
+*If there is no password you can remove the -W
+
+To grant select permissions to a user:
+{{{code: lang="sql" linenumbers="False"
+grant select on tab_abc to user_name;
+
+}}}
+
+
+To view permissions for each table:
+{{{code: lang="sql" linenumbers="False"
+\dp
+
+}}}
+
+
+To view all users:
+{{{code: lang="sql" linenumbers="False"
+\du
+
+}}}
+
+
+To quit out:
+{{{code: lang="sql" linenumbers="False"
+\q
+
+}}}
+
+

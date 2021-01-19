@@ -1,0 +1,42 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2021-01-18T14:19:40-08:00
+
+====== systemd-logind ======
+We had some complaints about the time it takes to login to a server having increased significatly after a server move.
+I checked some of the basic things (UseDNS set to no) etc.
+I did some googling and found a lot of people were talking about systemd-logind service.
+After running 
+{{{code: lang="sh" linenumbers="False"
+sudo watch systemctl status systemd-logind
+
+}}}
+
+
+I noticed systemd.logind kept restarting every 30 seconds or so and never actually fully activated.
+I then proceeded to run
+{{{code: lang="sh" linenumbers="False"
+sudo journalctl -fu systemd-logind
+
+}}}
+
+This let me know the error that it was running into.
+
+The error was:
+{{{code: lang="sh" linenumbers="False"
+Service has no hold-off time, scheduling restart.
+
+}}}
+
+After doing some digging around I found that it might be that systemd didn't load the service correctly.
+
+https://unix.stackexchange.com/questions/393394/systemd-logind-service-fails-to-start-when-attempting-to-return-from-rescue-tar
+And it was recomended to run:
+{{{code: lang="sh" linenumbers="False"
+sudo systemctl daemon-reexec
+
+}}}
+
+I wasn't sure what that did but after searching it looks like it just restarts the systemd process and should not interfere with any already existing connections etc.
+
+https://unix.stackexchange.com/questions/393394/systemd-logind-service-fails-to-start-when-attempting-to-return-from-rescue-tar
