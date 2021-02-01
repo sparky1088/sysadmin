@@ -1,0 +1,18 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2021-02-01T10:51:02-08:00
+
+====== Okta ======
+Created Monday 01 February 2021
+
+Okta lets you export hacking attempts or failed logins for reports. Blocking these is usually a good idea, make sure you exclude remote workers IPs and your office IP.
+
+I usually upload this to a google sheet file and use the following query (you may have to change the columns)
+
+{{{code: lang="sh" linenumbers="False"
+=SORT(UNIQUE(QUERY('Okta Report 12'!2:1000,"SELECT M, R, S WHERE M !='IP.OF.OFF.ICE' AND R !='United States' AND S !='United Kingdom' AND Y IS NOT NULL")),1,TRUE)
+
+}}}
+
+
+This and Jumpcloud need to be expanded...

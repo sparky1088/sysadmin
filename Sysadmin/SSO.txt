@@ -1,0 +1,10 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2021-02-01T10:50:00-08:00
+
+====== SSO ======
+There are lots of types of SSO.
+
+Jumpcloud uses directory as a service
+
+[[./Okta.txt|Okta]] uses active directory, you can integrate an AD server with Okta or you can do it standalone.
