@@ -71,3 +71,10 @@ you need to mark packets in order to rate limit them. Once the packets are marke
 
 --- need to add specific details probably.
 
+
+===== Updating =====
+https://wiki.mikrotik.com/wiki/Manual:Upgrading_RouterOS
+For some reason even with all the settings up and working these routers/switches can't seem to update (actually now that I think about it it is probably a firewall rule that is preventing them because they are on the switch network not the users network so the packets are being dropped).
+
+To manually update you just have to add the new file to the root directory of the files tab
+

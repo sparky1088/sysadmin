@@ -40,3 +40,16 @@ computer# nmcli device show <interfacename> | grep IP4.DNS
 }}}
 
 
+===== Sometimes stuck in boot loop =====
+This is the error message I managed to get
+{{{code: lang="sh" linenumbers="False"
+pcieport cant change power state from D3cold to D0 config space unavailable
+
+}}}
+
+After searching it looks like it might be an nvidia driver issue:
+https://www.google.com/search?channel=fs&client=ubuntu&q=pcieport+cant+change+power+state+from+D3cold+to+D0+config+space+unavailable 
+https://forums.developer.nvidia.com/t/bug-cant-change-power-state-from-d3cold-to-d0-config-space-inaccessible-stuck-at-boot/112912/4
+https://forum.manjaro.org/t/nvidia-cant-change-power-state-from-d3cold-to-d0-config-space-inaccessible/31979/3
+
+If updating it doesnt work or changing the settings suggested I plan on reinstalling the machine from scratch for this one.
