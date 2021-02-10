@@ -4,6 +4,9 @@ Creation-Date: 2020-07-31T09:39:13-07:00
 
 ====== Mikrotik ======
 
+A good mikrotik course
+https://courses.wispcasts.com/p/mikrotik-mtcna-course
+
 ===== Winbox =====
 Winbox works on mac, linux (must use wine) and windows but it is an amazing tool and will allow you to connect to your machine even without an ip address.
 
