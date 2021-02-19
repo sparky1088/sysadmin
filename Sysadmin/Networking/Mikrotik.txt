@@ -81,3 +81,8 @@ For some reason even with all the settings up and working these routers/switches
 
 To manually update you just have to add the new file to the root directory of the files tab
 
+===== Errors when Opening =====
+I'm not sure what caused this but it looks like a currupted session view file, but the systems are it will open for one switch but not another
+I removed the ip.of.swi.tch.viw from ~/.wine/drive_c/users/mwaldorf/Application Data/Mikrotik/Winbox and then it worked fine. I did loose the stuff i had in the sesision but I dont remember what it was anyways.
+
+
