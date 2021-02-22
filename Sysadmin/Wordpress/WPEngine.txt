@@ -1,0 +1,8 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2021-02-04T08:39:14-08:00
+
+====== WPEngine ======
+Created Thursday 04 February 2021
+
+This makes wordpres admin much easier. It allows for Dev and Staging environments as well as they have a Global Endpoint Firewall.

@@ -1,0 +1,51 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2021-02-04T10:09:47-08:00
+
+====== JumpCloud ======
+Created Thursday 04 February 2021
+
+==== Mac issues ====
+Sometimes macs have the jumpcloud service stop. When this happens the user cannot log in. It is always recommended to have a separate IT account. You have to login to the Admin account and start the service.  
+
+FIRST MAKE SURE THAT THE COMPUTER IS CHECKED OUT AND NOT SYNCING (Device Status in Jump Cloud)
+
+To check or change the agent status on a Mac, run as root
+{{{code: lang="sh" linenumbers="False"
+[root@mymac ~]# launchctl list | grep jumpcloud
+23392    -15    com.jumpcloud.darwin-agent
+
+}}}
+
+
+With process snapshot 
+{{{code: lang="sh" linenumbers="False"
+[root@mymac ~]# ps -fax | grep jumpcloud
+	0 23392     1   0  6:06PM ??         0:00.01 /bin/bash ./jumpcloud-service.sh
+	0 23398 23392   0  6:06PM ??         0:00.26 ./bin/jumpcloud-agent --conf=jcagent.conf
+
+}}}
+
+
+Launchctl will automatically try to start the service if it's loaded. If the service isn't running, make sure it's loaded
+{{{code: lang="sh" linenumbers="False"
+[root@mymac /opt/jc]# launchctl load /Library/LaunchDaemons/com.jumpcloud.darwin-agent.plist
+
+}}}
+
+
+To restart
+{{{code: lang="sh" linenumbers="False"
+[root@mymac /opt/jc]# launchctl stop com.jumpcloud.darwin-agent
+
+}}}
+
+
+To force a stop, unload the LaunchDaemon
+{{{code: lang="sh" linenumbers="False"
+[root@mymac ~]# launchctl unload /Library/LaunchDaemons/com.jumpcloud.darwin-agent.plist
+
+}}}
+
+
+https://support.jumpcloud.com/support/s/article/stopping-starting-or-restarting-the-jumpcloud-agent1

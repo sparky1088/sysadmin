@@ -1,0 +1,8 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2021-02-04T12:15:59-08:00
+
+====== Gsuite or Google Workspace ======
+Created Thursday 04 February 2021
+
+You can use SSO through Gsuite. Essentially the way some companies do it is via Jumpcloud/Gsuite because Okta charges an arm and a leg.

@@ -1,0 +1,47 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2021-02-04T14:11:30-08:00
+
+====== Radius ======
+Created Thursday 04 February 2021
+
+In Freeradius you have to configure your clients in [[/etc/freeradius/3.0/clients.conf]] make sure you have  a section like the following
+{{{code: lang="sh" linenumbers="False"
+#client 192.168.0.0/16 {
+#       secret          = testing123-2
+#       shortname       = private-network-2
+#       ipaddr          = 127.0.0.1
+#       nastype         = cisco/mikrotik/etc
+#}
+
+}}}
+
+
+Full list of nas types should be in the config but just in case:
+{{{code: lang="sh" linenumbers="False"
+        #       cisco
+        #       computone
+        #       livingston
+        #       max40xx
+        #       multitech
+        #       netserver
+        #       pathras
+        #       patton
+        #       portslave
+        #       tc
+        #       usrhiper
+        #       other           # for all other types
+
+}}}
+
+
+You can also name your client based on a name rather than the IP/subnet eg
+{{{code: lang="sh" linenumbers="False"
+#client router_name {
+#       secret          = testing123-2
+#       shortname       = private-network-2
+#       ipaddr          = 127.0.0.1
+#       nastype         = cisco/mikrotik/etc
+#}
+
+}}}

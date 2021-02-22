@@ -1,0 +1,8 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2021-02-04T14:10:14-08:00
+
+====== Auth ======
+Created Thursday 04 February 2021
+
+There are lots of kids of auth. keys, passwords, Radius, Ldap, SSO, Active Directoy (AD).

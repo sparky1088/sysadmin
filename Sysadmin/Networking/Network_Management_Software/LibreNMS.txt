@@ -1,0 +1,9 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2021-02-10T13:23:39-08:00
+
+====== LibreNMS ======
+Created Wednesday 10 February 2021
+
+This is a network monitoring software. They offer a VM that you can simply download as well as instructions for the things I would keep in mind that a VM needs to have the network a specific way.
+https://www.librenms.org/

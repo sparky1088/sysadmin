@@ -1,0 +1,21 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2021-02-04T08:38:02-08:00
+
+====== OpenStack ======
+Created Thursday 04 February 2021
+
+Right now this is just for bookmarks until I can get things sorted
+
+https://docs.openstack.org/install-guide/environment-networking.html
+I need to understand how to make the open stack environment open either on the same or a different network.
+
+
+This is the generic items and what they do in openstack.
+https://object-storage-ca-ymq-1.vexxhost.net/swift/v1/6e4619c416ff4bd19e1c087f27a43eea/www-assets-prod/openstack-map/openstack-map-v20191001.pdf
+
+
+
+https://www.openstack.org/software/sample-configs#big-data
+
+

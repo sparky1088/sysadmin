@@ -4,6 +4,9 @@ Creation-Date: 2020-07-31T09:39:13-07:00
 
 ====== Mikrotik ======
 
+A good mikrotik course
+https://courses.wispcasts.com/p/mikrotik-mtcna-course
+
 ===== Winbox =====
 Winbox works on mac, linux (must use wine) and windows but it is an amazing tool and will allow you to connect to your machine even without an ip address.
 
@@ -70,4 +73,16 @@ you need to mark packets in order to rate limit them. Once the packets are marke
 
 
 --- need to add specific details probably.
+
+
+===== Updating =====
+https://wiki.mikrotik.com/wiki/Manual:Upgrading_RouterOS
+For some reason even with all the settings up and working these routers/switches can't seem to update (actually now that I think about it it is probably a firewall rule that is preventing them because they are on the switch network not the users network so the packets are being dropped).
+
+To manually update you just have to add the new file to the root directory of the files tab
+
+===== Errors when Opening =====
+I'm not sure what caused this but it looks like a currupted session view file, but the systems are it will open for one switch but not another
+I removed the ip.of.swi.tch.viw from ~/.wine/drive_c/users/mwaldorf/Application Data/Mikrotik/Winbox and then it worked fine. I did loose the stuff i had in the sesision but I dont remember what it was anyways.
+
 

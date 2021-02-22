@@ -1,0 +1,9 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2021-02-04T13:46:40-08:00
+
+====== Sucuri ======
+Created Thursday 04 February 2021
+
+Sucuri is a Global Endpoint Secuirty for Wordpress it costs about 300 dollars per site (so it is expensive) but it has lots of nice firewalling features.
+One thing to note is that it tends to cache quite a lot. I have also noticed some lag time in its creation of certificates.
