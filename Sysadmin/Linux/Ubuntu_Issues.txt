@@ -40,3 +40,15 @@ computer# nmcli device show <interfacename> | grep IP4.DNS
 }}}
 
 
+
+===== Bluetooth Sound not working correctl =====
+This was because of updating from 18.04 to 20.04 it looks like a remnant file was made
+simple solution is to delete the old pulse audio config
+{{{code: lang="sh" linenumbers="True"
+mv ~/.config/pulse/ ~/.config/pulse.old
+systemctl --user restart pulseaudio
+
+}}}
+
+
+https://askubuntu.com/questions/1232159/ubuntu-20-04-no-sound-out-of-bluetooth-headphones
