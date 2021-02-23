@@ -40,6 +40,20 @@ computer# nmcli device show <interfacename> | grep IP4.DNS
 }}}
 
 
+<<<<<<< HEAD
+
+===== Bluetooth Sound not working correctl =====
+This was because of updating from 18.04 to 20.04 it looks like a remnant file was made
+simple solution is to delete the old pulse audio config
+{{{code: lang="sh" linenumbers="True"
+mv ~/.config/pulse/ ~/.config/pulse.old
+systemctl --user restart pulseaudio
+
+}}}
+
+
+https://askubuntu.com/questions/1232159/ubuntu-20-04-no-sound-out-of-bluetooth-headphones
+=======
 ===== Sometimes stuck in boot loop =====
 This is the error message I managed to get
 {{{code: lang="sh" linenumbers="False"
@@ -53,3 +67,4 @@ https://forums.developer.nvidia.com/t/bug-cant-change-power-state-from-d3cold-to
 https://forum.manjaro.org/t/nvidia-cant-change-power-state-from-d3cold-to-d0-config-space-inaccessible/31979/3
 
 If updating it doesnt work or changing the settings suggested I plan on reinstalling the machine from scratch for this one.
+>>>>>>> 8ab09e76c9ca6c8fe5e21cdefa4b5d456e22a248
