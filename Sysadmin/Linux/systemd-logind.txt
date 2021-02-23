@@ -3,7 +3,7 @@ Wiki-Format: zim 0.4
 Creation-Date: 2021-01-18T14:19:40-08:00
 
 ====== systemd-logind ======
-We had some complaints about the time it takes to login to a server having increased significatly after a server move.
+We had some complaints about the time it takes to login to a server (specifically using ssh) having increased significatly after a server move.
 I checked some of the basic things (UseDNS set to no) etc.
 I did some googling and found a lot of people were talking about systemd-logind service.
 After running 
