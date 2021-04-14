@@ -1,0 +1,41 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2021-04-14T10:16:31-07:00
+
+====== ComPort connection ======
+Created Wednesday 14 April 2021
+
+===== Minicom =====
+minicom is a a program to connect the usb to com ports. I had some trouble getting the settings right but once I got them right everything worked smoothly. I dont remember any of the other troubles I had but there were some. I'll figure those out if I see them again and write about it.
+
+Install the program with:
+{{{code: lang="sh" linenumbers="False"
+sudo apt-get install minicom
+
+}}}
+
+
+The config can be done using 
+{{{code: lang="sh" linenumbers="False"
+minicom -s
+
+}}}
+
+
+my current config is as follows in the default. I don't remember what the defaults were
+{{{code: lang="sh" linenumbers="False"
+cat /etc/minicom/minirc.dfl 
+# Machine-generated file - use "minicom -s" to change parameters.
+pu port             /dev/ttyUSB0
+pu baudrate         115200
+pu bits             8
+pu parity           N
+pu stopbits         1
+pu rtscts           No
+
+}}}
+
+
+
+https://help.ubuntu.com/community/Minicom
+
