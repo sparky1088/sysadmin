@@ -35,3 +35,9 @@ computer# zabbix_get -s agent.machine.address -k "system.cpu.load[,avg1]"
 
 Here is a list of things supported:
 https://www.zabbix.com/documentation/3.0/manual/appendix/items/supported_by_platform
+
+
+===== Zabbix ZFS =====
+There is a command to get the zabbix agent to be able to successfull run the zfs commands.
+There are varuous reasons zfs needs to be run with root. 
+Some tings to check are permissions for zabbix, permissions on "[[/dev/zfs"]] and sudo permissions in /etc/sudoers.d/
