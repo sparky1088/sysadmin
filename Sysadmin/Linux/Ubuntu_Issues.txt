@@ -54,6 +54,7 @@ systemctl --user restart pulseaudio
 
 https://askubuntu.com/questions/1232159/ubuntu-20-04-no-sound-out-of-bluetooth-headphones
 =======
+
 ===== Sometimes stuck in boot loop =====
 This is the error message I managed to get
 {{{code: lang="sh" linenumbers="False"
@@ -68,3 +69,8 @@ https://forum.manjaro.org/t/nvidia-cant-change-power-state-from-d3cold-to-d0-con
 
 If updating it doesnt work or changing the settings suggested I plan on reinstalling the machine from scratch for this one.
 >>>>>>> 8ab09e76c9ca6c8fe5e21cdefa4b5d456e22a248
+
+===== Zim =====
+i had to install an additional package to get the source code plugin working
+gir1.2-gtksource-3.0
+
