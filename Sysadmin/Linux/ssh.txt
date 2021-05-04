@@ -1,0 +1,17 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2021-04-29T10:34:40-07:00
+
+====== ssh ======
+
+If you are using PAM Ldap for authentication and you want to deny certain groups fro accessing servers you can add a line to sshd to do so
+{{{code: lang="sh" linenumbers="False"
+DenyGroups contractors
+
+}}}
+
+You can also Deny Specific Users{{{code: lang="sh" linenumbers="False"
+DenyUser user1
+
+}}}
+

@@ -4,7 +4,25 @@ Creation-Date: 2020-08-03T08:06:05-07:00
 
 ====== WebServers ======
 
+===== Combining Certs =====
 This is for all web servers, I always have to check how you combine the certs together.
+OpenSSL: Convert CRT to PEM:
+{{{code: lang="sh" linenumbers="False"
+openssl x509 -in cert.crt -out cert.pem
+
+}}}
+
+
+i dont remember if that was needed or not
+this is one of the more helpful resources with certs and chains
+https://www.digicert.com/kb/ssl-support/pem-ssl-creation.htm
+
+
+===== Check Experiation of Cert =====
+{{{code: lang="sh" linenumbers="False"
+cat economicmodeling.com.crt.2020 | openssl x509 -noout -enddate
+
+}}}
 
 
 
@@ -33,3 +51,5 @@ computer# openssl req -newkey rsa:4096 \
 * out example.crt - Specifies the filename to write the newly created certificate to. You can specify any file name.
 * keyout example.key - Specifies the filename to write the newly created private key to. You can specify any file name.
 https://linuxize.com/post/creating-a-self-signed-ssl-certificate/
+
+

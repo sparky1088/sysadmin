@@ -88,7 +88,7 @@ computer# nmap
 
 Slow Comprehenseive Scan
 {{{code: lang="sh" linenumbers="False"
-computer# nmap -sS -sU -T4 -A -v -PE -PP -PS80,443 -PA3389 -PU40125 -PY -g 53 –script “default or (discovery and safe)”
+computer# nmap -sS -sU -T4 -A -v -PE -PP -PS80,443 -PA3389 -PU40125 -PY -g 53 –script “default or (discovery and safe)” 192.168.1.0/24 -oX scan.xml
  
 }}}
 
