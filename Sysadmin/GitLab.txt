@@ -22,6 +22,9 @@ The config for postgresql (///etc/postgresql/version#/main/postgresql.conf//) le
 
 ===== Updates from source =====
 
+==== Always check Version Specific Upgrading Instructions at the bottom ====
+It is usually at the bottom make sure to check this first as it will affect certain steps.
+
 ==== update proceedure ====
 These steps are followed for each version make sure you are looking at the documentaiton for the one you are upgrading to.
 https://gitlab.com/gitlab-org/gitlab-foss/blob/13-1-stable/doc/update/upgrading_from_source.md
