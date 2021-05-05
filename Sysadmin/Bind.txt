@@ -34,3 +34,19 @@ For example
 The benefit to this is you can see when it was last edited, however if you have to make 2 edits in a single day or fix an edit you still have to increase and you can see when a file was last edited on linux using the stat or ls -l commands. If there is another benefit I do not know it.
 
 From: https://www.oreilly.com/library/view/dns-and-bind/0596100574/ch04.html
+
+
+===== Forwarders (for using externally dns queries) =====
+in the named.conf.options file you can add forwarders for sepeare DNS queries that you dont have set up in your bind files. Otherwise I believe it uses the authority and pulls that down in a cache.
+I have had to change the max-ncach-ttl as well in order to have the cache pull faster but that didn't seem to prevent dns timeouts from not updating quick enough.
+
+{{{code: lang="sh" linenumbers="False"
+options {
+     max-ncache-ttl   10;
+     forwarders {
+          9.9.9.9;
+          194.112.112.112;
+          };
+      };
+
+}}}
