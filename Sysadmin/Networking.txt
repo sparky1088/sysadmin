@@ -32,39 +32,56 @@ computer# grep "37\.43947" 12.3.txt >12.3.port43947.txt
 }}}
 
 
-===== IP Tables: =====
-This is to maintain persistent connections for already established sessions so a rule doesnt fork you over when chagning things
+The site I used to always use to look up commands has gone down (https://www.rationallyparanoid.com/articles/tcpdump.html) the wayback machine does have it (https://web.archive.org/web/20190213191324/https://www.rationallyparanoid.com/articles/tcpdump.html)
+Here are a few commands that are helpful
+Filtering by a port (or by excluding a port) and using either sorce or destination ports or a port range
 {{{code: lang="sh" linenumbers="True"
--A INPUT -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT
+tcpdump -i eth1 port not 22 and host 1.2.3.4
+tcpdump src port 3306
+tcpdump dst port 3306
+tcpdump portrange 80-85
+}}}
+
+https traffic
+{{{code: lang="sh" linenumbers="True"
+tcpdump -nnSX port 443
 
 }}}
 
-or
+Filter by source or destination
 {{{code: lang="sh" linenumbers="True"
-computer# iptables -A INPUT -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT
+tcpdump src 1.1.1.1
+tcpdump dst 1.0.0.1
+
+}}}
+
+Filter by network
+{{{code: lang="sh" linenumbers="True"
+tcpdump net 1.2.3.0/24
+
+}}}
+
+Hex output of packets (Hex output is useful when you want to see the content of the packets in question, and it’s often best used when you’re isolating a few candidates for closer scrutiny.)
+{{{code: lang="sh" linenumbers="True"
+tcpdump -c 1 -X icmp
+
+}}}
+
+Only show icmp traffic 
+{{{code: lang="sh" linenumbers="True"
+tcpdump icmp
 
 }}}
 
 
-To save IP Tables:
+https://danielmiessler.com/study/tcpdump/
+
+===== SSLDump =====
+ssldump lets you decrypt ssl traffic (https) so long as you have the keys
 {{{code: lang="sh" linenumbers="True"
-computer# iptables-save > /path/to/file
+ssldump -k /path/to/key_file.key -i 'interface' -dnq 'expression'
 
 }}}
-
-
-To manually restart IP Tables (I had this initially for a raspberry pi):
-{{{code: lang="sh" linenumbers="True"
-computer# iptables-restore < /etc/iptables/rules.v4
-
-}}}
-
-or
-{{{code: lang="sh" linenumbers="True"
-computer# cat /etc/iptables/rules.v4 | iptables-restore
-
-}}}
-
 
 
 ===== Test network speeds: =====
