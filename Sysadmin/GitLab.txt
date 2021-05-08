@@ -20,3 +20,28 @@ Postgresql database loction and user config can be found in the config folder fo
 
 The config for postgresql (///etc/postgresql/version#/main/postgresql.conf//) lead me to ///var/lib/postgresql/version#/main/// as the location for the database. 
 
+===== Updates from source =====
+
+==== Always check Version Specific Upgrading Instructions at the bottom ====
+It is usually at the bottom make sure to check this first as it will affect certain steps.
+
+==== update proceedure ====
+These steps are followed for each version make sure you are looking at the documentaiton for the one you are upgrading to.
+https://gitlab.com/gitlab-org/gitlab-foss/blob/13-1-stable/doc/update/upgrading_from_source.md
+
+==== update paths ====
+This outlines the versions but basically you have to make sure to hit certain versions when you update Previously you only had to do specific releases.
+https://gitlab.com/gitlab-org/gitlab-foss/-/blob/13-1-stable/doc/policy/maintenance.md#upgrade-recommendations
+
+==== update requirements ====
+Always check this for the version you are going to as it will let you know what other things need to be updated eg postgresql needs to go to version 11 for this version (13.1)
+
+
+===== Updates From Omnibus =====
+These are much much easier as i believe it is just an apt upgrade at that point.
+
+
+
+
+
+https://gitlab.com/gitlab-org/gitlab-foss/-/blob/13-1-stable/doc/install/requirements.md#go-versions

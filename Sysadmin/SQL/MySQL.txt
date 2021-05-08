@@ -15,14 +15,14 @@ mysql> create database `new-db-name`;
 2. Create user with specific access: 
 {{{code: lang="sql" linenumbers="True"
 mysql> CREATE USER 'newuser'@'localhost' IDENTIFIED BY 'password';
-mysql> GRANT USAGE ON *.* TO 'kb-uk-new'@'localhost'; GRANT ALL PRIVILEGES ON `database`.* TO 'user'@'localhost';
+mysql> GRANT USAGE ON *.* TO 'newuser'@'localhost'; GRANT ALL PRIVILEGES ON `database`.* TO 'user'@'localhost';
 mysql> FLUSH PRIVILEGES;
 
 }}}
 
 3. Import old database into new database: 
 {{{code: lang="sh" linenumbers="True"
-computer$ cat kb-uk.sql | mysql kb-uk-new
+computer$ cat database.sql | mysql new-db-name
 
 }}}
 
@@ -150,7 +150,7 @@ mysql> SET PASSWORD FOR 'UserName'@'localhost' = PASSWORD('SomeReallyLongObscure
 mysql> DELETE USER 'USER1'@'127.0.0.1' IDENTIFIED BY 'SomeSecurePassword';
 mysql> DROP USER 'USER1'@'127.0.0.1';
 
-mysql> CREATE USER 'USER1'@'localhost' IDENTIFIED BY 'VsJqEo!&E$DBSkuVCqd';
+mysql> CREATE USER 'USER1'@'localhost' IDENTIFIED BY 'SomeSecurePassword';
 mysql> GRANT SELECT, UPDATE, INSERT, DELETE ON database_name.table_name TO USER1@'localhost';
 
 mysql> GRANT FILE ON *.* to USER1@'localhost';

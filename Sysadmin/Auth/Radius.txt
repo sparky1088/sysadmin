@@ -5,6 +5,8 @@ Creation-Date: 2021-02-04T14:11:30-08:00
 ====== Radius ======
 Created Thursday 04 February 2021
 
+This is how you ldap can communicate to the router using a radius for auth to a vpn or to a machine etc.
+
 In Freeradius you have to configure your clients in [[/etc/freeradius/3.0/clients.conf]] make sure you have  a section like the following
 {{{code: lang="sh" linenumbers="False"
 #client 192.168.0.0/16 {

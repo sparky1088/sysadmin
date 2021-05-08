@@ -7,9 +7,11 @@ Creation-Date: 2020-09-11T09:39:17-07:00
 If a powershell script is not signed you can run the following
 
 {{{code: lang="powershell" linenumbers="False"
-> set-ececutionpolicy unrestricted -scope process
+> set-executionpolicy unrestricted -scope process
 
 }}}
 
 
 There are other scopes but I find that one is the one to only allow it for a 1 time use.
+
+https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-7.1

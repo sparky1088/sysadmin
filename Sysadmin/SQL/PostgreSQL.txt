@@ -41,3 +41,17 @@ To quit out:
 }}}
 
 
+===== Updates and Install =====
+
+==== install ====
+https://www.postgresql.org/docs/9.6/install-procedure.html
+
+==== update ====
+Basically take a back up install the new version and feed a dump of the old data into the new one on a different port, turn off the old one change port of new one and start the service back.
+https://www.postgresql.org/docs/9.6/upgrading.html
+
+You will need to make sure the start.conf is set to manual or disabled for the old version.
+postgresql.conf is where you will set the port.
+
+Validate the settings for the following files as well in the main folder of the postgres etc version
+environment  pg_ctl.conf  pg_hba.conf  pg_ident.conf 

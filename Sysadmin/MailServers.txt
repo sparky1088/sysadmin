@@ -1,0 +1,94 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2021-05-06T08:58:08-07:00
+
+====== MailServers ======
+Created Thursday 06 May 2021
+
+===== DMARC =====
+dkim is for reporting of spf etc validations to make sure the correct senders are sending and not spammer/scammers
+This is a txt record with _dkim.domain.com
+To view the record use the following
+{{{code: lang="sh" linenumbers="False"
+$ dig TXT _dmarc.domain.com
+
+}}}
+
+
+===== SPF =====
+SPF The Sender Policy Framework (SPF) is an email-authentication technique which is used to prevent spammers from sending messages on behalf of your domain. With SPF an organisation can publish authorized mail servers. This must include IPS for various servers. It also has a string limit
+{{{code: lang="sh" linenumbers="False"
+$ dig TXT domain.com
+
+}}}
+
+Response
+{{{code: lang="sh" linenumbers="False"
+; <<>> DiG 9.16.1-Ubuntu <<>> TXT domain.com
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 31385
+;; flags: qr rd ra; QUERY: 1, ANSWER: 9, AUTHORITY: 0, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 65494
+;; QUESTION SECTION:
+;domain.com.		IN	TXT
+
+;; ANSWER SECTION:
+domain.com.	3600	IN	TXT	"v=spf1 include:_spf.google.com include:_spf.salesforce.com include:spf.mandrillapp.com ip4:ip.of.ser.ver ~all"
+
+;; Query time: 20 msec
+;; SERVER: 127.0.0.53#53(127.0.0.53)
+;; WHEN: Thu May 06 08:56:24 PDT 2021
+;; MSG SIZE  rcvd: 864
+
+}}}
+
+
+===== DKIM =====
+DomainKeys Identified Mail, or DKIM, is a technical standard that helps protect email senders and recipients from spam, spoofing, and phishing. It is a form of email authentication that allows an organization to claim responsibility for a message in a way that can be validated by the recipient.
+
+Google has specific instructions for generating and what it has to be called but it is google._domainkey.domain.com as a text record. Some DNS companies (including route53) do not allow for 2048 keylengths so you have to generate it using 1024 sizes
+In the Google Admin Console you can find it under:
+**Apps > Google Workspace > Settings for Gmail > Authenticate email**
+
+{{{code: lang="sh" linenumbers="False"
+$ dig TXT google._domainkey.domain.com
+
+}}}
+
+
+{{{code: lang="sh" linenumbers="False"
+; <<>> DiG 9.16.1-Ubuntu <<>> TXT google._domainkey.domain.com
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 13312
+;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 65494
+;; QUESTION SECTION:
+;google._domainkey.domain.com.	IN TXT
+
+;; ANSWER SECTION:
+google._domainkey.domain.com.	2412 IN	TXT "v=DKIM1; k=rsa; p=SomeReallyLongKey"
+
+;; Query time: 4 msec
+;; SERVER: 127.0.0.53#53(127.0.0.53)
+;; WHEN: Thu May 06 09:23:06 PDT 2021
+;; MSG SIZE  rcvd: 314
+
+
+}}}
+
+
+--------------------
+
+The google documents for these are basically what were used to set them up along with what was already set up (usually if we get asked to add additional things to any of these records there is documentation specfic for it eg salesforce)
+dmarc
+https://support.google.com/a/answer/2466563?hl=en
+dkim
+https://support.google.com/a/answer/174124?hl=en
+spf
+https://support.google.com/a/answer/33786?hl=en

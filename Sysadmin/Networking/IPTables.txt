@@ -1,0 +1,62 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2021-05-06T08:23:54-07:00
+
+====== IPTables ======
+Created Thursday 06 May 2021
+
+This is to maintain persistent connections for already established sessions so a rule doesnt fork you over when chagning things
+{{{code: lang="sh" linenumbers="True"
+-A INPUT -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT
+
+}}}
+
+or
+{{{code: lang="sh" linenumbers="True"
+computer# iptables -A INPUT -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT
+
+}}}
+
+
+To save IP Tables:
+{{{code: lang="sh" linenumbers="True"
+computer# iptables-save > /path/to/file
+
+}}}
+
+
+To manually restart IP Tables (I had this initially for a raspberry pi):
+{{{code: lang="sh" linenumbers="True"
+computer# iptables-restore < /etc/iptables/rules.v4
+
+}}}
+
+or
+{{{code: lang="sh" linenumbers="True"
+computer# cat /etc/iptables/rules.v4 | iptables-restore
+
+}}}
+
+
+Some basic rules can be found here:
+https://www.thegeekstuff.com/2011/06/iptables-rules-examples/
+
+
+==== IPSET ====
+iptables can also use the ipset package. This lets you create ipsets for your firewall rules in iptables.
+I have only used this very limitedly (as in it was already in place) in a file under /etc/ipset.list
+{{{code: lang="sh" linenumbers="True"
+create set-name hash:net family inet hashsize 1024 maxelem 65536
+add set-name 192.168.0.0/22
+add set-name 192.168.8.0/22
+add set-name 192.168.32.0/23
+add set-name 10.10.0.0/22
+
+}}}
+
+
+A quick search lead me here it doesnt contain many examples but hopefully it will help.
+https://www.linuxjournal.com/content/advanced-firewall-configurations-ipset
+
+This has much more examples:
+https://howto.lintel.in/use-ipset-command-linux-block-bulk-ips/
