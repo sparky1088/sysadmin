@@ -40,7 +40,7 @@ mysql> UPDATE wp_options SET option_value = replace(option_value, 'https://oldur
 
 5. Update the wp_posts and wp_postmeta:
 {{{code: lang="sql" linenumbers="True"
-mysql> UPDATE wp_posts SET guid = replace(guid, 'https://oldurl','https://emsicollege.emsidata.co.uk') where guid like 'https://newurl%';
+mysql> UPDATE wp_posts SET guid = replace(guid, 'https://oldurl','https://newurl') where guid like 'https://oldurl%';
 mysql> UPDATE wp_posts SET post_content = replace(post_content, 'https://oldurl','https://newurl') where post_content like 'https://oldurl%';
 mysql> UPDATE wp_postmeta SET meta_value = replace(meta_value,'https://oldurl','https://newurl') where meta_value like 'https://oldurl%';
 

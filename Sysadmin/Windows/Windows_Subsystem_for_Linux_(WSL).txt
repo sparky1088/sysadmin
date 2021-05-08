@@ -1,0 +1,21 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2021-03-18T11:59:25-07:00
+
+====== Windows Subsystem for Linux (WSL) ======
+
+
+===== vpn dns not working =====
+We don't have many WLS users (at least that I know of) that also use the vpn but there was an issue today that appears to be present and unresolved where dns stops working on just the linux side of the subsystem.
+https://github.com/microsoft/WSL/issues/1350
+To resolve it just add (above the other entries) nameserver ip.ad.dr.ess to the /etc/resolv.conf file (that should be all that needs to happen. I don't forsee this being a big issue but it is one of those 1 offs that I can see a lot of time being spent on if you don't know how to resolve it or what to look for.
+
+the file will look something like this:
+{{{code: lang="sh" linenumbers="True"
+nameserver ip.ad.dr.ess
+nameserver 127.0.0.53
+options edns0 trust-ad
+search home
+
+}}}
+
